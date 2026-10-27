@@ -343,16 +343,47 @@
     .form-card { border-radius: 24px; border: 1px solid var(--line); background: #fff; box-shadow: var(--shadow); overflow: hidden; }
     .form-card-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 24px; border-bottom: 1px solid var(--line); background: var(--soft); }
     .form-card-head strong { color: var(--ink); }
-    .form-card-head a { font-size: .88rem; font-weight: 600; color: var(--sky-700); text-decoration: none; }
-    .form-card-head a:hover { text-decoration: underline; }
-    .form-card iframe { display: block; width: 100%; height: 1900px; border: 0; }
-    .form-fallback { padding: 48px 40px; text-align: center; }
-    .form-fallback .icon-tile { margin: 0 auto 20px; width: 64px; height: 64px; border-radius: 20px; }
-    .form-fallback .icon-tile svg { width: 28px; height: 28px; }
-    .form-fallback h3 { font-size: 1.4rem; }
-    .form-fallback p { max-width: 460px; margin: 0 auto 26px; }
-    .form-fallback .hint { margin-top: 22px; font-size: .86rem; color: var(--muted); }
-    .form-fallback ul { text-align: left; max-width: 420px; margin: 0 auto 28px; padding: 22px 26px 22px 44px; border-radius: 16px; background: var(--sky-50); color: var(--ink); font-size: .95rem; }
+    .form-card-head > span { font-size: .85rem; font-weight: 600; color: var(--muted); white-space: nowrap; }
+    [hidden] { display: none !important; }
+    .booking-form { display: grid; gap: 26px; padding: 30px 32px 34px; }
+    .bf-intro { margin: 0; padding: 16px 18px; border-radius: 14px; background: var(--sky-50); color: var(--ink); font-size: .95rem; }
+    .bf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .bf-field { min-width: 0; margin: 0; padding: 0; border: 0; }
+    .bf-label, .bf-field legend { display: block; margin-bottom: 10px; padding: 0; font-weight: 600; color: var(--ink); font-size: .97rem; line-height: 1.4; }
+    .bf-help { margin: -4px 0 10px; font-size: .86rem; color: var(--muted); }
+    .req { color: var(--sky-700); }
+    .booking-form input[type="text"], .booking-form input[type="email"], .booking-form textarea {
+      display: block; width: 100%; padding: 12px 14px; border: 1px solid #cbd5e1; border-radius: 12px;
+      font: inherit; font-size: .97rem; color: var(--ink); background: #fff; transition: border-color .2s, box-shadow .2s;
+    }
+    .booking-form textarea { min-height: 104px; resize: vertical; }
+    .booking-form input:focus, .booking-form textarea:focus { outline: none; border-color: var(--sky-500); box-shadow: 0 0 0 4px var(--sky-100); }
+    .bf-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .bf-opt {
+      display: flex; align-items: flex-start; gap: 10px; padding: 11px 14px; border: 1px solid var(--line); border-radius: 12px;
+      cursor: pointer; font-size: .93rem; line-height: 1.35; color: var(--ink); transition: border-color .2s, background-color .2s;
+    }
+    .bf-opt:hover { border-color: var(--sky-300); }
+    .bf-opt:has(input:checked) { border-color: var(--sky-500); background: var(--sky-50); }
+    .bf-opt input { width: 18px; height: 18px; margin: 0; flex-shrink: 0; accent-color: var(--sky-600); }
+    .bf-other { margin-top: 10px; }
+    .bf-error { display: block; margin-top: 8px; font-size: .85rem; font-weight: 500; color: #b91c1c; }
+    .bf-error:empty { display: none; }
+    .bf-field.invalid input[type="text"], .bf-field.invalid input[type="email"], .bf-field.invalid textarea { border-color: #ef4444; }
+    .bf-field.invalid .bf-opt { border-color: #fca5a5; }
+    .bf-honey { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+    .bf-submit { display: grid; gap: 12px; }
+    .bf-submit .btn { width: 100%; }
+    .bf-submit .btn[disabled] { opacity: .7; cursor: progress; transform: none; }
+    .bf-alert { margin: 0; padding: 12px 14px; border-radius: 12px; background: #fef2f2; color: #991b1b; font-size: .92rem; }
+    .bf-alert a { font-weight: 600; }
+    .bf-note { margin: 0; font-size: .82rem; color: var(--muted); text-align: center; }
+    .form-done { padding: 56px 40px; text-align: center; }
+    .form-done:focus { outline: none; }
+    .form-done .icon-tile { margin: 0 auto 20px; width: 64px; height: 64px; border-radius: 20px; }
+    .form-done .icon-tile svg { width: 28px; height: 28px; }
+    .form-done h3 { font-size: 1.4rem; }
+    .form-done p { max-width: 440px; margin: 0 auto; }
 
     /* FAQ */
     .faq { background: var(--soft); }
@@ -441,8 +472,9 @@
       .float-card.one { left: -14px; bottom: 22px; }
       .float-card.two { right: -14px; top: 18px; }
       .hero-ctas .btn { width: 100%; }
-      .form-fallback { padding: 40px 22px; }
-      .form-card iframe { height: 2200px; }
+      .booking-form { padding: 24px 20px 28px; }
+      .bf-row, .bf-options { grid-template-columns: 1fr; }
+      .form-done { padding: 44px 22px; }
       .cta-box { padding: 56px 22px; }
     }
   </style>
@@ -731,7 +763,7 @@
         <ol class="steps">
           <li class="reveal">
             <h3>Tell me what's holding you back</h3>
-            <p>Fill in a 2-minute form: your biggest obstacle, what you would like help with and when you are free.</p>
+            <p>Fill in a 2-minute form: where you are now, what made you reach out and what you would like to work on.</p>
           </li>
           <li class="reveal d1">
             <h3>Discovery session</h3>
@@ -744,7 +776,7 @@
         </ol>
         <div class="facts">
           <div class="fact reveal"><svg><use href="#i-video"/></svg><span><strong>Online sessions</strong><span>Join from anywhere by video call</span></span></div>
-          <div class="fact reveal d1"><svg><use href="#i-calendar"/></svg><span><strong>Flexible scheduling</strong><span>Share your preferred days and times</span></span></div>
+          <div class="fact reveal d1"><svg><use href="#i-calendar"/></svg><span><strong>Flexible scheduling</strong><span>We agree a time that suits you</span></span></div>
           <div class="fact reveal d2"><svg><use href="#i-tag"/></svg><span><strong>Pricing on request</strong><span>Tailored to the support you need</span></span></div>
         </div>
       </div>
@@ -756,7 +788,7 @@
         <div class="book-info reveal">
           <span class="eyebrow">Book a discovery session</span>
           <h2>Tell me what's holding you back.</h2>
-          <p>A few quick questions about your biggest obstacle at work, what you would like help with and when you are free. I read every request personally and will get back to you to arrange a discovery session.</p>
+          <p>A few quick questions about where you are now, what made you reach out and what would make our session truly valuable for you. I read every answer personally and will get back to you by email to arrange a time.</p>
           <ul class="next-steps">
             <li><svg><use href="#i-check-circle"/></svg><span>Takes about 2 minutes</span></li>
             <li><svg><use href="#i-check-circle"/></svg><span>Your answers come directly to me</span></li>
@@ -780,22 +812,84 @@
 
         <div class="form-card reveal d1">
           <div class="form-card-head">
-            <strong>Book a discovery session</strong>
-            <a id="formOpenLink" href="#" target="_blank" rel="noopener" hidden>Open in new tab ↗</a>
+            <strong>Pre-session questionnaire</strong>
+            <span>About 2 minutes</span>
           </div>
-          <!-- The Google Form appears here automatically once GOOGLE_FORM_URL is set at the bottom of this file. -->
-          <div id="formSlot">
-            <div class="form-fallback">
-              <span class="icon-tile"><svg><use href="#i-mail"/></svg></span>
-              <h3>Book by email</h3>
-              <p>Send me a short note and I will come back to you to arrange a discovery session. It helps to include:</p>
-              <ul>
-                <li>The biggest obstacle you are facing at work</li>
-                <li>What you would like help with</li>
-                <li>Your preferred days, times and time zone</li>
-              </ul>
-              <a class="btn btn-primary" href="mailto:lisi.francy@gmail.com?subject=Discovery%20session%20request&amp;body=Hi%20Francesca%2C%0A%0AThe%20biggest%20obstacle%20I%27m%20facing%20at%20work%3A%20%0AWhat%20I%27d%20like%20help%20with%3A%20%0APreferred%20days%2Ftimes%20and%20time%20zone%3A%20%0A%0AThanks%2C%0A">Email me to book <svg><use href="#i-arrow"/></svg></a>
+          <!-- Answers are emailed to Francesca via FormSubmit (formsubmit.co). See README. -->
+          <form id="bookingForm" class="booking-form" action="https://formsubmit.co/lisi.francy@gmail.com" method="POST" novalidate>
+            <p class="bf-intro">I'm looking forward to connecting with you! These few questions will help me understand your goals and tailor our session to what matters most to you. There are no right or wrong answers – just be yourself!</p>
+            <input type="hidden" name="_subject" value="New coaching request from your website">
+            <input type="hidden" name="_template" value="table">
+            <input type="text" name="_honey" class="bf-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+            <div class="bf-row">
+              <div class="bf-field" data-field="text" data-label="Full name">
+                <label class="bf-label" for="bf-name">Full name <span class="req">*</span></label>
+                <input id="bf-name" name="Full name" type="text" autocomplete="name" required>
+                <span class="bf-error" aria-live="polite"></span>
+              </div>
+              <div class="bf-field" data-field="email" data-label="email">
+                <label class="bf-label" for="bf-email">Email address <span class="req">*</span></label>
+                <input id="bf-email" name="email" type="email" autocomplete="email" required>
+                <span class="bf-error" aria-live="polite"></span>
+              </div>
             </div>
+
+            <fieldset class="bf-field" data-field="radio" data-label="1. What best describes you right now?">
+              <legend>1. What best describes you right now? <span class="req">*</span></legend>
+              <div class="bf-options">
+                <label class="bf-opt"><input type="radio" name="1. What best describes you right now?" value="Student"><span>Student</span></label>
+                <label class="bf-opt"><input type="radio" name="1. What best describes you right now?" value="Recent graduate"><span>Recent graduate</span></label>
+                <label class="bf-opt"><input type="radio" name="1. What best describes you right now?" value="Working professional"><span>Working professional</span></label>
+                <label class="bf-opt"><input type="radio" name="1. What best describes you right now?" value="Entrepreneur / Founder"><span>Entrepreneur / Founder</span></label>
+                <label class="bf-opt"><input type="radio" name="1. What best describes you right now?" value="Other" data-other><span>Other</span></label>
+              </div>
+              <input class="bf-other" type="text" name="1. Other" aria-label="Other – please specify" placeholder="Please specify" hidden>
+              <span class="bf-error" aria-live="polite"></span>
+            </fieldset>
+
+            <div class="bf-field" data-field="text" data-label="2. What made you book this coaching session?">
+              <label class="bf-label" for="bf-why">2. What made you book this coaching session? <span class="req">*</span></label>
+              <textarea id="bf-why" name="2. What made you book this coaching session?" required></textarea>
+              <span class="bf-error" aria-live="polite"></span>
+            </div>
+
+            <fieldset class="bf-field" data-field="checkbox" data-label="3. What would you most like to work on during our session?">
+              <legend>3. What would you most like to work on during our session? <span class="req">*</span></legend>
+              <p class="bf-help">Select all that apply.</p>
+              <div class="bf-options">
+                <label class="bf-opt"><input type="checkbox" name="3. What would you most like to work on?" value="Job search &amp; CV review"><span>Job search &amp; CV review</span></label>
+                <label class="bf-opt"><input type="checkbox" name="3. What would you most like to work on?" value="Interview preparation – MBB consulting"><span>Interview preparation – MBB consulting</span></label>
+                <label class="bf-opt"><input type="checkbox" name="3. What would you most like to work on?" value="Interview preparation – Big Tech"><span>Interview preparation – Big Tech</span></label>
+                <label class="bf-opt"><input type="checkbox" name="3. What would you most like to work on?" value="Personal growth &amp; self-awareness"><span>Personal growth &amp; self-awareness</span></label>
+                <label class="bf-opt"><input type="checkbox" name="3. What would you most like to work on?" value="Confidence &amp; mindset"><span>Confidence &amp; mindset</span></label>
+                <label class="bf-opt"><input type="checkbox" name="3. What would you most like to work on?" value="Career or academic direction"><span>Career or academic direction</span></label>
+                <label class="bf-opt"><input type="checkbox" name="3. What would you most like to work on?" value="Goals, habits &amp; accountability"><span>Goals, habits &amp; accountability</span></label>
+                <label class="bf-opt"><input type="checkbox" name="3. What would you most like to work on?" value="Leadership &amp; communication"><span>Leadership &amp; communication</span></label>
+                <label class="bf-opt"><input type="checkbox" name="3. What would you most like to work on?" value="Decision-making"><span>Decision-making</span></label>
+                <label class="bf-opt"><input type="checkbox" name="3. What would you most like to work on?" value="Other" data-other><span>Other</span></label>
+              </div>
+              <input class="bf-other" type="text" name="3. Other" aria-label="Other – please specify" placeholder="Please specify" hidden>
+              <span class="bf-error" aria-live="polite"></span>
+            </fieldset>
+
+            <div class="bf-field" data-field="text" data-label="4. What would make this session truly valuable for you?">
+              <label class="bf-label" for="bf-value">4. What would make this session truly valuable for you? <span class="req">*</span></label>
+              <p class="bf-help">For example: gaining clarity, identifying next steps, or leaving with a practical action plan.</p>
+              <textarea id="bf-value" name="4. What would make this session truly valuable for you?" required></textarea>
+              <span class="bf-error" aria-live="polite"></span>
+            </div>
+
+            <div class="bf-submit">
+              <p class="bf-alert" role="alert" hidden>Sorry, something went wrong. Please try again, or email me at <a href="mailto:lisi.francy@gmail.com">lisi.francy@gmail.com</a>.</p>
+              <button class="btn btn-primary" type="submit">Send my answers <svg><use href="#i-arrow"/></svg></button>
+              <p class="bf-note">Your answers come straight to my inbox and are only used to prepare our session.</p>
+            </div>
+          </form>
+          <div class="form-done" id="formDone" tabindex="-1" hidden>
+            <span class="icon-tile"><svg><use href="#i-check-circle"/></svg></span>
+            <h3>Thank you for sharing!</h3>
+            <p>I'm looking forward to our session. I'll be in touch by email shortly to arrange a time.</p>
           </div>
         </div>
       </div>
@@ -814,8 +908,8 @@
             <p>Fill in the 2-minute form above, or email me directly. I read every request and will get back to you to arrange a discovery session at a time that suits you.</p>
           </details>
           <details class="reveal">
-            <summary>Why do you ask about my obstacle at work?</summary>
-            <p>Because that is where real progress starts. Knowing what is holding you back before we meet means our discovery session can go straight to what matters most to you.</p>
+            <summary>Why do you ask questions before we meet?</summary>
+            <p>So our session can go straight to what matters most to you – whether that is the obstacle holding you back at work, an upcoming interview or your next career move.</p>
           </details>
           <details class="reveal">
             <summary>Are sessions online?</summary>
@@ -860,51 +954,102 @@
 
   <script>
     // ====================================================================
-    //  EDIT THIS: paste your Google Form link between the quotes.
-    //  Use the full link from Google Forms > Send > Link (docs.google.com/forms/d/e/.../viewform).
-    //  Leave empty to show the "Book by email" card instead.
+    //  Booking form: answers are emailed to Francesca via FormSubmit.
+    //  After activating the form, you can replace the email address below
+    //  with the random string FormSubmit sends you, to hide your address.
     // ====================================================================
-    const GOOGLE_FORM_URL = "";
+    const FORM_ENDPOINT = 'https://formsubmit.co/ajax/lisi.francy@gmail.com';
 
     (function setUpBookingForm() {
-      const url = GOOGLE_FORM_URL.trim();
-      if (!url) return;
+      const form = document.getElementById('bookingForm');
+      if (!form) return;
+      const done = document.getElementById('formDone');
+      const alertBox = form.querySelector('.bf-alert');
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const submitHtml = submitBtn.innerHTML;
+      const fields = [...form.querySelectorAll('[data-field]')];
+      const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
-      const slot = document.getElementById('formSlot');
-      const openLink = document.getElementById('formOpenLink');
-      openLink.href = url;
-      openLink.hidden = false;
+      const otherInput = (field) => field.querySelector('.bf-other');
+      const otherChecked = (field) => !!field.querySelector('input[data-other]:checked');
 
-      if (/^https:\/\/docs\.google\.com\/forms\/.+\/viewform/.test(url)) {
-        const embedUrl = new URL(url);
-        embedUrl.searchParams.set('embedded', 'true');
-        const iframe = document.createElement('iframe');
-        iframe.src = embedUrl.toString();
-        iframe.title = 'Book a discovery session';
-        iframe.loading = 'lazy';
-        iframe.textContent = 'Loading…';
-        // After the form is submitted, bring the confirmation message back into view.
-        let loads = 0;
-        iframe.addEventListener('load', () => {
-          if (loads++ > 0) slot.closest('.form-card').scrollIntoView({ block: 'start' });
-        });
-        slot.replaceChildren(iframe);
-      } else {
-        // Short links (forms.gle) cannot be embedded, so show a button instead.
-        const box = document.createElement('div');
-        box.className = 'form-fallback';
-        box.innerHTML = '<span class="icon-tile"><svg><use href="#i-calendar"/></svg></span>' +
-          '<h3>Book a discovery session</h3>' +
-          '<p>The form opens in a new tab and takes about 2 minutes.</p>';
-        const btn = document.createElement('a');
-        btn.className = 'btn btn-primary';
-        btn.href = url;
-        btn.target = '_blank';
-        btn.rel = 'noopener';
-        btn.innerHTML = 'Open the form <svg><use href="#i-external"/></svg>';
-        box.appendChild(btn);
-        slot.replaceChildren(box);
+      function valueOf(field) {
+        const type = field.dataset.field;
+        if (type === 'text' || type === 'email') return field.querySelector('input, textarea').value.trim();
+        const picked = [...field.querySelectorAll('input:checked')].map((i) =>
+          i.hasAttribute('data-other') ? 'Other: ' + otherInput(field).value.trim() : i.value);
+        return picked.join('; ');
       }
+
+      function check(field) {
+        const type = field.dataset.field;
+        let msg = '';
+        if (type === 'text' || type === 'email') {
+          const v = valueOf(field);
+          if (!v) msg = 'This question is required.';
+          else if (type === 'email' && !EMAIL_RE.test(v)) msg = 'Please enter a valid email address.';
+        } else if (!field.querySelector('input:checked')) {
+          msg = type === 'checkbox' ? 'Please select at least one option.' : 'Please choose an option.';
+        } else if (otherChecked(field) && !otherInput(field).value.trim()) {
+          msg = 'Please tell me a little more about "Other".';
+        }
+        field.classList.toggle('invalid', !!msg);
+        field.querySelector('.bf-error').textContent = msg;
+        return !msg;
+      }
+
+      fields.forEach((field) => {
+        const other = otherInput(field);
+        field.addEventListener('change', () => {
+          if (other) {
+            other.hidden = !otherChecked(field);
+            if (!other.hidden && document.activeElement && document.activeElement.hasAttribute('data-other')) other.focus();
+          }
+          if (field.classList.contains('invalid')) check(field);
+        });
+        field.addEventListener('input', () => { if (field.classList.contains('invalid')) check(field); });
+      });
+
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        alertBox.hidden = true;
+        const invalid = fields.filter((field) => !check(field));
+        if (invalid.length) {
+          invalid[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+          const target = invalid[0].querySelector('.bf-other:not([hidden])') || invalid[0].querySelector('input, textarea');
+          target.focus({ preventScroll: true });
+          return;
+        }
+
+        const data = {
+          _subject: 'New coaching request from ' + valueOf(fields[0]),
+          _template: 'table',
+          _honey: form.querySelector('.bf-honey').value
+        };
+        fields.forEach((field) => { data[field.dataset.label] = valueOf(field); });
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending…';
+        try {
+          const res = await fetch(FORM_ENDPOINT, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+            body: JSON.stringify(data)
+          });
+          const json = await res.json().catch(() => ({}));
+          if (!res.ok || String(json.success) !== 'true') throw new Error(json.message || 'HTTP ' + res.status);
+          form.hidden = true;
+          done.hidden = false;
+          done.closest('.form-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
+          done.focus({ preventScroll: true });
+        } catch (err) {
+          console.error('Booking form error:', err);
+          alertBox.hidden = false;
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = submitHtml;
+        }
+      });
     })();
 
     // Sticky nav background
