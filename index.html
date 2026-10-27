@@ -1071,15 +1071,15 @@
 
         // FormSubmit can take up to a minute to reply, so thank the visitor straight away and
         // let the request finish in the background. keepalive lets it complete even if they leave.
+        // FormSubmit sometimes replies with an error even though the email was delivered, so only
+        // warn the visitor when the request can't be sent at all (e.g. no connection).
         fetch(FORM_ENDPOINT, {
           method: 'POST',
           headers: { Accept: 'application/json' },
           body: new URLSearchParams(data),
           keepalive: true
         })
-          .then((res) => res.json().catch(() => ({})).then((json) => {
-            if (!res.ok || String(json.success) !== 'true') throw new Error(json.message || 'HTTP ' + res.status);
-          }))
+          .then((res) => { if (!res.ok) console.warn('Booking form: FormSubmit replied HTTP ' + res.status); })
           .catch((err) => {
             console.error('Booking form error:', err);
             warn.hidden = false;
