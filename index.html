@@ -283,7 +283,8 @@
       background: #fff; border: 1px solid var(--line);
       transition: border-color .2s, box-shadow .2s, transform .2s;
     }
-    .obstacle:hover { border-color: var(--sky-200); box-shadow: var(--shadow); transform: translateY(-3px); }
+    a.obstacle { height: 100%; color: inherit; text-decoration: none; cursor: pointer; }
+    .obstacle:hover, .obstacle:focus-visible { border-color: var(--sky-200); box-shadow: var(--shadow); transform: translateY(-3px); }
     .obstacle strong { display: block; margin-bottom: 4px; color: var(--ink); font: 700 1.05rem/1.35 "Plus Jakarta Sans", sans-serif; }
     .obstacle span span { font-size: .94rem; }
     .obstacle-answer {
@@ -724,30 +725,30 @@
           <p>Most people I work with don't lack talent or ambition – something specific is standing in their way. Does any of this sound familiar?</p>
         </div>
         <ul class="obstacle-grid">
-          <li class="obstacle reveal">
+          <li class="reveal"><a class="obstacle" href="#book" data-obstacle>
             <span class="icon-tile"><svg><use href="#i-pause"/></svg></span>
             <span><strong>“I feel stuck in my role.”</strong><span>You are doing good work, but your career isn't moving forward.</span></span>
-          </li>
-          <li class="obstacle reveal d1">
+          </a></li>
+          <li class="reveal d1"><a class="obstacle" href="#book" data-obstacle>
             <span class="icon-tile"><svg><use href="#i-eye-off"/></svg></span>
             <span><strong>“I keep getting overlooked.”</strong><span>Your impact isn't visible to the people who make promotion decisions.</span></span>
-          </li>
-          <li class="obstacle reveal d2">
+          </a></li>
+          <li class="reveal d2"><a class="obstacle" href="#book" data-obstacle>
             <span class="icon-tile"><svg><use href="#i-inbox"/></svg></span>
             <span><strong>“I'm not hearing back.”</strong><span>Your applications and CV aren't turning into interviews.</span></span>
-          </li>
-          <li class="obstacle reveal">
+          </a></li>
+          <li class="reveal"><a class="obstacle" href="#book" data-obstacle>
             <span class="icon-tile"><svg><use href="#i-x-circle"/></svg></span>
             <span><strong>“I get interviews, but no offers.”</strong><span>You are close, but something in the interview isn't landing.</span></span>
-          </li>
-          <li class="obstacle reveal d1">
+          </a></li>
+          <li class="reveal d1"><a class="obstacle" href="#book" data-obstacle>
             <span class="icon-tile"><svg><use href="#i-help"/></svg></span>
             <span><strong>“I don't know what's next.”</strong><span>You are ready for a change but unsure which direction to take.</span></span>
-          </li>
-          <li class="obstacle reveal d2">
+          </a></li>
+          <li class="reveal d2"><a class="obstacle" href="#book" data-obstacle>
             <span class="icon-tile"><svg><use href="#i-battery"/></svg></span>
             <span><strong>“I've lost my confidence.”</strong><span>Self-doubt is stopping you from going after what you want.</span></span>
-          </li>
+          </a></li>
         </ul>
         <div class="obstacle-answer reveal">
           <div>
@@ -1134,7 +1135,6 @@
                 <label class="bf-opt"><input type="radio" name="1. What best describes you right now?" value="Student"><span>Student</span></label>
                 <label class="bf-opt"><input type="radio" name="1. What best describes you right now?" value="Recent graduate"><span>Recent graduate</span></label>
                 <label class="bf-opt"><input type="radio" name="1. What best describes you right now?" value="Working professional"><span>Working professional</span></label>
-                <label class="bf-opt"><input type="radio" name="1. What best describes you right now?" value="Entrepreneur / Founder"><span>Entrepreneur / Founder</span></label>
                 <label class="bf-opt"><input type="radio" name="1. What best describes you right now?" value="Other" data-other><span>Other</span></label>
               </div>
               <input class="bf-other" type="text" name="1. Other" aria-label="Other – please specify" placeholder="Please specify" hidden>
@@ -1284,6 +1284,7 @@
         card.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
       document.getElementById('formOpen').addEventListener('click', openForm);
+      const why = document.getElementById('bf-why');
       document.querySelectorAll('a[href="#book"]').forEach((link) => link.addEventListener('click', (event) => {
         event.preventDefault();
         // Buttons on the "Ways to work together" cards pre-select that option in the form.
@@ -1291,6 +1292,11 @@
         if (choice && !choice.checked) {
           choice.checked = true;
           choice.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+        // Obstacle cards pre-fill question 2, without overwriting anything the visitor has typed.
+        if (link.hasAttribute('data-obstacle') && (!why.value.trim() || why.value === why.dataset.prefill)) {
+          why.value = why.dataset.prefill = link.querySelector('strong').textContent.replace(/[“”"]/g, '').trim() + ' ';
+          why.dispatchEvent(new Event('input', { bubbles: true }));
         }
         openForm();
       }));
