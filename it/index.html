@@ -242,9 +242,16 @@
 
     /* About */
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+    .about-grid .promise { position: sticky; top: 110px; }
     .about-grid h2 { font-size: clamp(1.9rem, 3.2vw, 2.6rem); margin-top: 14px; }
     .about-text p { font-size: 1.1rem; }
     .about-text p.big { font-size: 1.28rem; color: var(--ink); font-weight: 500; line-height: 1.55; }
+    .creds { display: flex; flex-wrap: wrap; gap: 10px; margin: 26px 0 16px; padding: 0; list-style: none; }
+    .creds li {
+      padding: 7px 14px; border-radius: 999px; font-size: .86rem; font-weight: 600; line-height: 1.3;
+      color: var(--sky-700); background: var(--sky-50); border: 1px solid var(--sky-200);
+    }
+    .about-text p.fine-print { margin: 0; font-size: .82rem; color: var(--muted); }
     .promise { display: grid; gap: 16px; margin: 0; padding: 0; list-style: none; }
     .promise li {
       display: flex; gap: 16px; align-items: flex-start; padding: 22px 24px;
@@ -369,6 +376,17 @@
     .fact svg { width: 22px; height: 22px; color: var(--sky-400); }
     .fact strong { display: block; color: #fff; font-size: .98rem; }
     .fact span { font-size: .88rem; color: #94a3b8; }
+
+    /* Packages */
+    .packages-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .package { display: flex; flex-direction: column; padding: 30px 26px; }
+    .package.featured { border-color: var(--sky-300); background: linear-gradient(180deg, var(--sky-50), #fff 60%); }
+    .package .badge { position: absolute; top: 26px; right: 22px; }
+    .package h3 { margin: 20px 0 6px; }
+    .package .pkg-meta { display: block; margin-bottom: 12px; font-size: .84rem; font-weight: 700; color: var(--sky-700); }
+    .package p { flex: 1; margin: 0 0 24px; }
+    .package .btn { width: 100%; padding: 12px 18px; font-size: .93rem; }
+    .packages-note { max-width: 640px; margin: 36px auto 0; text-align: center; }
 
     /* Reviews */
     .reviews { background: var(--soft); }
@@ -540,6 +558,9 @@
       .nav-links .lang-switch { align-self: flex-start; margin: 8px 0 4px; }
       .nav-links .lang-switch a:not(.btn) { padding: 6px 16px; font-size: .9rem; }
     }
+    @media (max-width: 1100px) {
+      .packages-grid { grid-template-columns: 1fr 1fr; }
+    }
     @media (max-width: 980px) {
       section { padding: 84px 0; }
       .hero { padding: 132px 0 88px; }
@@ -547,6 +568,7 @@
       .hero-grid { gap: 72px; }
       .portrait { width: min(360px, 82%); }
       .about-grid { gap: 40px; }
+      .about-grid .promise { position: static; }
       .premium-card { padding: 44px 32px 44px 40px; gap: 36px; }
       .cards, .steps, .facts, .reviews-grid { grid-template-columns: 1fr; }
       .obstacle-grid { grid-template-columns: 1fr 1fr; }
@@ -555,7 +577,7 @@
     }
     @media (max-width: 560px) {
       .container { width: calc(100% - 36px); }
-      .checklist, .tracks, .obstacle-grid { grid-template-columns: 1fr; }
+      .checklist, .tracks, .obstacle-grid, .packages-grid { grid-template-columns: 1fr; }
       .obstacle-answer { padding: 28px 22px; }
       .obstacle-answer .btn { width: 100%; }
       .float-card.two { right: -14px; top: 18px; }
@@ -664,9 +686,18 @@
       <div class="container about-grid">
         <div class="about-text reveal">
           <span class="eyebrow">Chi sono</span>
-          <h2>Una guida strategica per esprimere tutto il tuo potenziale.</h2>
-          <p class="big">Con un solido background professionale e una vera passione per lo sviluppo dei talenti, aiuto le persone a esprimere tutto il loro potenziale.</p>
-          <p>Che tu stia affrontando un cambio di carriera, entrando nel mondo del lavoro o puntando a un ruolo di alto livello in azienda, ti offro la guida strategica di cui hai bisogno per percorrere la tua strada con chiarezza e sicurezza.</p>
+          <h2>Ho affrontato in prima persona i colloqui per cui ti preparo.</h2>
+          <p>Sono Francesca. Ho iniziato la mia carriera nell'M&amp;A a Milano, poi ho lavorato come consulente in Strategy&amp; e in Boston Consulting Group (BCG) su progetti di strategia, M&amp;A e trasformazione digitale per grandi banche e aziende del settore energetico. Dopo un ruolo in strategia in Cassa Depositi e Prestiti, sono passata in una Big Tech, dove da oltre quattro anni mi occupo di strategia e operations Go-to-Market. Oggi, da Dublino, guido iniziative di strategia e pianificazione per l'area EMEA e LATAM. Nel mio ruolo attuale faccio anche colloqui ai candidati, quindi vedo in prima persona cosa fa davvero la differenza.</p>
+          <p>Conosco quindi entrambi i mondi dall'interno: i case interview e le domande di fit della consulenza, e i colloqui strutturati e comportamentali delle Big Tech. So anche cosa vuol dire cambiare settore, trasferirsi in un altro Paese e chiedersi se il proprio profilo sia quello “giusto”.</p>
+          <p class="big">Quello che ho visto è che raramente le persone in gamba sono frenate da una mancanza di potenziale. A frenarle sono una storia che non convince, l'assenza di un piano chiaro e troppa poca pratica realistica. È proprio su questo che lavoriamo insieme.</p>
+          <ul class="creds" aria-label="Il mio percorso">
+            <li>Ex BCG e Strategy&amp;</li>
+            <li>Strategia Go-to-Market in una Big Tech</li>
+            <li>Laurea magistrale in Bocconi, 110/110 e lode</li>
+            <li>Coaching per studenti MBA all'IMD</li>
+            <li>Italiano e inglese</li>
+          </ul>
+          <p class="fine-print">I nomi delle aziende descrivono solo la mia esperienza. Il mio coaching è un servizio personale, non affiliato a queste aziende né da esse approvato.</p>
         </div>
         <ul class="promise">
           <li class="reveal d1">
@@ -852,8 +883,8 @@
             <p>Compila un modulo di 2 minuti: a che punto sei, su cosa vorresti lavorare e quando sei disponibile.</p>
           </li>
           <li class="reveal d1">
-            <h3>La tua prima sessione</h3>
-            <p>Ci incontriamo online e andiamo dritti al punto: il tuo ostacolo, i tuoi obiettivi e come posso aiutarti al meglio.</p>
+            <h3>La tua chiamata conoscitiva gratuita</h3>
+            <p>15 minuti online per parlare del tuo ostacolo e dei tuoi obiettivi e capire se sono la coach giusta per te. Senza impegno.</p>
           </li>
           <li class="reveal d2">
             <h3>Il tuo piano su misura</h3>
@@ -863,8 +894,51 @@
         <div class="facts">
           <div class="fact reveal"><svg><use href="#i-video"/></svg><span><strong>Sessioni online</strong><span>In videochiamata, ovunque tu sia</span></span></div>
           <div class="fact reveal d1"><svg><use href="#i-calendar"/></svg><span><strong>Orari flessibili</strong><span>Troviamo insieme l'orario giusto per te</span></span></div>
-          <div class="fact reveal d2"><svg><use href="#i-tag"/></svg><span><strong>Prezzi su richiesta</strong><span>In base al supporto di cui hai bisogno</span></span></div>
+          <div class="fact reveal d2"><svg><use href="#i-tag"/></svg><span><strong>Chiamata conoscitiva gratuita di 15 minuti</strong><span>Prezzo in base al supporto di cui hai bisogno</span></span></div>
         </div>
+      </div>
+    </section>
+
+    <!-- Packages -->
+    <section id="packages" class="packages">
+      <div class="container">
+        <div class="section-head center reveal">
+          <span class="eyebrow">Come lavorare insieme</span>
+          <h2>Scegli il supporto adatto al tuo obiettivo.</h2>
+          <p>Si parte da una chiamata conoscitiva gratuita di 15 minuti. Poi scegliamo insieme il formato più adatto a dove sei e a dove vuoi arrivare.</p>
+        </div>
+        <div class="packages-grid">
+          <article class="card package featured reveal">
+            <span class="badge">Inizia da qui</span>
+            <span class="icon-tile"><svg><use href="#i-video"/></svg></span>
+            <h3>Chiamata conoscitiva gratuita</h3>
+            <span class="pkg-meta">15 minuti · Gratuita</span>
+            <p>Ci conosciamo, parliamo del tuo obiettivo e capiamo se sono la coach giusta per te. Senza impegno.</p>
+            <a class="btn btn-primary" href="#book" data-package="call">Prenota gratis <svg><use href="#i-arrow"/></svg></a>
+          </article>
+          <article class="card package reveal d1">
+            <span class="icon-tile"><svg><use href="#i-compass"/></svg></span>
+            <h3>Sessione di strategia di carriera</h3>
+            <span class="pkg-meta">1 sessione · 60 minuti</span>
+            <p>Diamo un nome al tuo ostacolo, rivediamo il tuo CV e ne esci con un piano d'azione chiaro e concreto.</p>
+            <a class="btn btn-outline" href="#book" data-package="session">Scegli questa opzione</a>
+          </article>
+          <article class="card package reveal d2">
+            <span class="icon-tile"><svg><use href="#i-target"/></svg></span>
+            <h3>Preparazione colloqui: MBB o Big Tech</h3>
+            <span class="pkg-meta">Pacchetto di sessioni</span>
+            <p>Costruito intorno alle date dei tuoi colloqui: simulazioni di case interview o di colloqui comportamentali, feedback dettagliato e una storia che convince.</p>
+            <a class="btn btn-outline" href="#book" data-package="interview">Scegli questa opzione</a>
+          </article>
+          <article class="card package reveal d3">
+            <span class="icon-tile"><svg><use href="#i-route"/></svg></span>
+            <h3>Percorso di cambio carriera</h3>
+            <span class="pkg-meta">Percorso di più settimane</span>
+            <p>Per un cambiamento importante, passo dopo passo: posizionamento, CV e LinkedIn, networking e colloqui.</p>
+            <a class="btn btn-outline" href="#book" data-package="change">Scegli questa opzione</a>
+          </article>
+        </div>
+        <p class="packages-note reveal">Il prezzo dipende dal supporto di cui hai bisogno: ne parliamo durante la chiamata conoscitiva gratuita, quando avremo capito entrambi che è la scelta giusta.</p>
       </div>
     </section>
 
@@ -977,6 +1051,7 @@
           <h2>Raccontami cosa ti frena.</h2>
           <p>Qualche domanda veloce: a che punto sei, cosa ti ha spinto a contattarmi, cosa renderebbe la nostra sessione davvero utile per te e quando sei disponibile. Leggo personalmente ogni risposta e ti scriverò via email per confermare l'orario.</p>
           <ul class="next-steps">
+            <li><svg><use href="#i-check-circle"/></svg><span>Si parte da una chiamata conoscitiva gratuita di 15 minuti, senza impegno</span></li>
             <li><svg><use href="#i-check-circle"/></svg><span>Richiede circa 2 minuti</span></li>
             <li><svg><use href="#i-check-circle"/></svg><span>Le tue risposte arrivano direttamente a me</span></li>
             <li><svg><use href="#i-check-circle"/></svg><span>Preferisci l'email? Scrivimi direttamente qui sotto</span></li>
@@ -1027,6 +1102,18 @@
                 <span class="bf-error" aria-live="polite"></span>
               </div>
             </div>
+
+            <fieldset class="bf-field" data-field="radio" data-label="Opzione che ti interessa">
+              <legend>Quale opzione ti interessa? <span class="req">*</span></legend>
+              <div class="bf-options">
+                <label class="bf-opt"><input type="radio" name="Opzione che ti interessa" value="Chiamata conoscitiva gratuita di 15 minuti" data-package="call"><span>Chiamata conoscitiva gratuita di 15 minuti</span></label>
+                <label class="bf-opt"><input type="radio" name="Opzione che ti interessa" value="Sessione di strategia di carriera" data-package="session"><span>Sessione di strategia di carriera</span></label>
+                <label class="bf-opt"><input type="radio" name="Opzione che ti interessa" value="Preparazione colloqui: MBB o Big Tech" data-package="interview"><span>Preparazione colloqui: MBB o Big Tech</span></label>
+                <label class="bf-opt"><input type="radio" name="Opzione che ti interessa" value="Percorso di cambio carriera" data-package="change"><span>Percorso di cambio carriera</span></label>
+                <label class="bf-opt"><input type="radio" name="Opzione che ti interessa" value="Non lo so ancora: parliamone" data-package="unsure"><span>Non lo so ancora: parliamone</span></label>
+              </div>
+              <span class="bf-error" aria-live="polite"></span>
+            </fieldset>
 
             <fieldset class="bf-field" data-field="radio" data-label="1. Cosa ti descrive meglio in questo momento?">
               <legend>1. Cosa ti descrive meglio in questo momento? <span class="req">*</span></legend>
@@ -1105,7 +1192,7 @@
         <div class="faq-list">
           <details class="reveal">
             <summary>Come prenoto una sessione di career coaching?</summary>
-            <p>Clicca su "Prenota una sessione di career coaching", rispondi a qualche domanda veloce e dimmi quando sei disponibile, oppure scrivimi direttamente via email. Leggo ogni richiesta e ti risponderò per confermare la sessione.</p>
+            <p>Clicca su "Prenota una sessione di career coaching", scegli l'opzione che ti interessa (oppure parti dalla chiamata conoscitiva gratuita di 15 minuti), rispondi a qualche domanda veloce e dimmi quando sei disponibile, oppure scrivimi direttamente via email. Leggo ogni richiesta e ti risponderò per confermare la sessione.</p>
           </details>
           <details class="reveal">
             <summary>Perché mi fai delle domande prima di incontrarci?</summary>
@@ -1116,8 +1203,24 @@
             <p>Sì. Le sessioni si svolgono online in videochiamata, in italiano o in inglese, così puoi collegarti ovunque tu sia.</p>
           </details>
           <details class="reveal">
-            <summary>Quanto costa il coaching?</summary>
-            <p>Il prezzo dipende dal tipo di supporto e da quanto ne hai bisogno. Ti darò tutti i dettagli quando ti ricontatterò per organizzare la sessione.</p>
+            <summary>Qual è l'investimento?</summary>
+            <p>Dipende dal supporto di cui hai bisogno: una singola sessione, un pacchetto di preparazione ai colloqui o un percorso più lungo. Ne parliamo durante la chiamata conoscitiva gratuita di 15 minuti, quando avremo capito entrambi che è la scelta giusta. Senza alcun impegno.</p>
+          </details>
+          <details class="reveal">
+            <summary>Puoi garantirmi che otterrò il lavoro?</summary>
+            <p>No, e nessun coach onesto può farlo. Il risultato dipende dal tuo background, dal momento e dall'impegno che ci metti. Quello che posso prometterti è un feedback sincero, un piano chiaro e tutto il mio impegno per aiutarti a dare il meglio.</p>
+          </details>
+          <details class="reveal">
+            <summary>Ho già ricevuto un no da un'azienda top: è troppo tardi?</summary>
+            <p>Assolutamente no. Un rifiuto ti mostra su cosa lavorare, e la maggior parte delle aziende permette di ricandidarsi dopo un certo periodo. Analizziamo con onestà cosa non ha funzionato (la tua storia, i casi o le risposte comportamentali) e costruiamo un piano per arrivare al prossimo tentativo con una preparazione migliore.</p>
+          </details>
+          <details class="reveal">
+            <summary>Non ho una rete di contatti né conoscenze interne: posso farcela lo stesso?</summary>
+            <p>Sì. Una rete di contatti aiuta, ma si può costruire. Lavoriamo su chi contattare, su come farlo in modo naturale e su come rendere la tua candidatura abbastanza forte da farsi notare da sola.</p>
+          </details>
+          <details class="reveal">
+            <summary>Il mio percorso non è quello classico da consulenza o tech: posso competere?</summary>
+            <p>Sì. Il mio percorso è passato dall'M&amp;A alla consulenza e poi a una Big Tech, quindi so come tradurre l'esperienza da un mondo all'altro. Conta come colleghi il tuo background al ruolo: troviamo insieme i tuoi punti di forza e li trasformiamo in una storia che i recruiter capiscono.</p>
           </details>
           <details class="reveal">
             <summary>Non punto alla consulenza o alle Big Tech: puoi aiutarmi lo stesso?</summary>
@@ -1131,8 +1234,8 @@
     <section class="cta">
       <div class="container">
         <div class="cta-box reveal">
-          <h2>Vuoi esprimere tutto il tuo potenziale?</h2>
-          <p>Raccontami cosa ti frena e costruiamo insieme la tua strategia per il successo.</p>
+          <h2>La tua carriera merita un investimento.</h2>
+          <p>La preparazione giusta oggi fa la differenza per i prossimi anni della tua carriera. Inizia con una chiamata conoscitiva gratuita di 15 minuti: raccontami cosa ti frena e costruiamo insieme il tuo piano.</p>
           <div class="hero-ctas">
             <a class="btn btn-primary" href="#book">Prenota una sessione di career coaching <svg><use href="#i-arrow"/></svg></a>
             <a class="btn btn-ghost" href="https://www.linkedin.com/in/francesca-lisi" target="_blank" rel="noopener"><svg><use href="#i-linkedin"/></svg>Collegati su LinkedIn</a>
@@ -1184,6 +1287,12 @@
       document.getElementById('formOpen').addEventListener('click', openForm);
       document.querySelectorAll('a[href="#book"]').forEach((link) => link.addEventListener('click', (event) => {
         event.preventDefault();
+        // Buttons on the "Ways to work together" cards pre-select that option in the form.
+        const choice = link.dataset.package && form.querySelector('input[data-package="' + link.dataset.package + '"]');
+        if (choice && !choice.checked) {
+          choice.checked = true;
+          choice.dispatchEvent(new Event('change', { bubbles: true }));
+        }
         openForm();
       }));
 

@@ -255,9 +255,16 @@
 
     /* About */
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+    .about-grid .promise { position: sticky; top: 110px; }
     .about-grid h2 { font-size: clamp(1.9rem, 3.2vw, 2.6rem); margin-top: 14px; }
     .about-text p { font-size: 1.1rem; }
     .about-text p.big { font-size: 1.28rem; color: var(--ink); font-weight: 500; line-height: 1.55; }
+    .creds { display: flex; flex-wrap: wrap; gap: 10px; margin: 26px 0 16px; padding: 0; list-style: none; }
+    .creds li {
+      padding: 7px 14px; border-radius: 999px; font-size: .86rem; font-weight: 600; line-height: 1.3;
+      color: var(--sky-700); background: var(--sky-50); border: 1px solid var(--sky-200);
+    }
+    .about-text p.fine-print { margin: 0; font-size: .82rem; color: var(--muted); }
     .promise { display: grid; gap: 16px; margin: 0; padding: 0; list-style: none; }
     .promise li {
       display: flex; gap: 16px; align-items: flex-start; padding: 22px 24px;
@@ -382,6 +389,17 @@
     .fact svg { width: 22px; height: 22px; color: var(--sky-400); }
     .fact strong { display: block; color: #fff; font-size: .98rem; }
     .fact span { font-size: .88rem; color: #94a3b8; }
+
+    /* Packages */
+    .packages-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .package { display: flex; flex-direction: column; padding: 30px 26px; }
+    .package.featured { border-color: var(--sky-300); background: linear-gradient(180deg, var(--sky-50), #fff 60%); }
+    .package .badge { position: absolute; top: 26px; right: 22px; }
+    .package h3 { margin: 20px 0 6px; }
+    .package .pkg-meta { display: block; margin-bottom: 12px; font-size: .84rem; font-weight: 700; color: var(--sky-700); }
+    .package p { flex: 1; margin: 0 0 24px; }
+    .package .btn { width: 100%; padding: 12px 18px; font-size: .93rem; }
+    .packages-note { max-width: 640px; margin: 36px auto 0; text-align: center; }
 
     /* Reviews */
     .reviews { background: var(--soft); }
@@ -553,6 +571,9 @@
       .nav-links .lang-switch { align-self: flex-start; margin: 8px 0 4px; }
       .nav-links .lang-switch a:not(.btn) { padding: 6px 16px; font-size: .9rem; }
     }
+    @media (max-width: 1100px) {
+      .packages-grid { grid-template-columns: 1fr 1fr; }
+    }
     @media (max-width: 980px) {
       section { padding: 84px 0; }
       .hero { padding: 132px 0 88px; }
@@ -560,6 +581,7 @@
       .hero-grid { gap: 72px; }
       .portrait { width: min(360px, 82%); }
       .about-grid { gap: 40px; }
+      .about-grid .promise { position: static; }
       .premium-card { padding: 44px 32px 44px 40px; gap: 36px; }
       .cards, .steps, .facts, .reviews-grid { grid-template-columns: 1fr; }
       .obstacle-grid { grid-template-columns: 1fr 1fr; }
@@ -568,7 +590,7 @@
     }
     @media (max-width: 560px) {
       .container { width: calc(100% - 36px); }
-      .checklist, .tracks, .obstacle-grid { grid-template-columns: 1fr; }
+      .checklist, .tracks, .obstacle-grid, .packages-grid { grid-template-columns: 1fr; }
       .obstacle-answer { padding: 28px 22px; }
       .obstacle-answer .btn { width: 100%; }
       .float-card.two { right: -14px; top: 18px; }
@@ -677,9 +699,18 @@
       <div class="container about-grid">
         <div class="about-text reveal">
           <span class="eyebrow">About me</span>
-          <h2>Strategic guidance to help you unlock your full potential.</h2>
-          <p class="big">With a strong professional background and a passion for talent development, I am dedicated to helping individuals unlock their full potential.</p>
-          <p>Whether you are navigating a career transition, entering the job market, or aiming for a top-tier corporate role, I provide the strategic guidance you need to navigate your path with clarity and confidence.</p>
+          <h2>I've been through the interviews I'll prepare you for.</h2>
+          <p>I'm Francesca. I started my career in M&amp;A in Milan, then worked as a consultant at Strategy&amp; and Boston Consulting Group (BCG) on strategy, M&amp;A and digital transformation for leading banks and energy companies. After a strategy role at Cassa Depositi e Prestiti, I moved to Big Tech, where I've spent over four years in Go-to-Market strategy and operations. Today I lead strategy and planning initiatives across EMEA and LATAM from Dublin. In my current role I also interview candidates, so I see first-hand what makes someone stand out.</p>
+          <p>So I know both worlds from the inside: case interviews and fit questions in consulting, and the structured, behavioural interviews of Big Tech. I also know what it's like to change industry, move country and wonder whether your profile is ‘right’.</p>
+          <p class="big">What I've seen is that strong people are rarely held back by a lack of potential. They're held back by a story that doesn't land, no clear plan and too little realistic practice. That's what we work on together.</p>
+          <ul class="creds" aria-label="My background">
+            <li>Ex-BCG &amp; Strategy&amp;</li>
+            <li>Go-to-Market strategy in Big Tech</li>
+            <li>Bocconi MSc, 110/110 cum laude</li>
+            <li>MBA coaching at IMD</li>
+            <li>English &amp; Italian</li>
+          </ul>
+          <p class="fine-print">Company names describe my experience only. My coaching is a personal service, not affiliated with or endorsed by these companies.</p>
         </div>
         <ul class="promise">
           <li class="reveal d1">
@@ -865,8 +896,8 @@
             <p>Fill in a 2-minute form: where you are now, what you would like to work on and when you are available.</p>
           </li>
           <li class="reveal d1">
-            <h3>Your first session</h3>
-            <p>We meet online and go straight to your obstacle, your goals and how I can best support you.</p>
+            <h3>Your free intro call</h3>
+            <p>15 minutes online to talk about your obstacle and your goals and see whether I'm the right coach for you – no commitment.</p>
           </li>
           <li class="reveal d2">
             <h3>Your tailored plan</h3>
@@ -876,8 +907,51 @@
         <div class="facts">
           <div class="fact reveal"><svg><use href="#i-video"/></svg><span><strong>Online sessions</strong><span>Join from anywhere by video call</span></span></div>
           <div class="fact reveal d1"><svg><use href="#i-calendar"/></svg><span><strong>Flexible scheduling</strong><span>We agree a time that suits you</span></span></div>
-          <div class="fact reveal d2"><svg><use href="#i-tag"/></svg><span><strong>Pricing on request</strong><span>Tailored to the support you need</span></span></div>
+          <div class="fact reveal d2"><svg><use href="#i-tag"/></svg><span><strong>Free 15-minute intro call</strong><span>Pricing tailored to the support you need</span></span></div>
         </div>
+      </div>
+    </section>
+
+    <!-- Packages -->
+    <section id="packages" class="packages">
+      <div class="container">
+        <div class="section-head center reveal">
+          <span class="eyebrow">Ways to work together</span>
+          <h2>Choose the support that fits your goal.</h2>
+          <p>Start with a free 15-minute intro call. Then we choose the format that fits where you are and where you want to go.</p>
+        </div>
+        <div class="packages-grid">
+          <article class="card package featured reveal">
+            <span class="badge">Start here</span>
+            <span class="icon-tile"><svg><use href="#i-video"/></svg></span>
+            <h3>Free intro call</h3>
+            <span class="pkg-meta">15 minutes · Free</span>
+            <p>Let's get to know each other, talk about your goal and see whether I'm the right coach for you. No commitment.</p>
+            <a class="btn btn-primary" href="#book" data-package="call">Book your free call <svg><use href="#i-arrow"/></svg></a>
+          </article>
+          <article class="card package reveal d1">
+            <span class="icon-tile"><svg><use href="#i-compass"/></svg></span>
+            <h3>Career Strategy Session</h3>
+            <span class="pkg-meta">1 session · 60 minutes</span>
+            <p>We name your obstacle, review your CV and you leave with a clear, practical action plan.</p>
+            <a class="btn btn-outline" href="#book" data-package="session">Choose this option</a>
+          </article>
+          <article class="card package reveal d2">
+            <span class="icon-tile"><svg><use href="#i-target"/></svg></span>
+            <h3>Interview Prep: MBB or Big Tech</h3>
+            <span class="pkg-meta">Package of sessions</span>
+            <p>Built around your interview dates: mock case or behavioural interviews, detailed feedback and a story that lands.</p>
+            <a class="btn btn-outline" href="#book" data-package="interview">Choose this option</a>
+          </article>
+          <article class="card package reveal d3">
+            <span class="icon-tile"><svg><use href="#i-route"/></svg></span>
+            <h3>Career Change Programme</h3>
+            <span class="pkg-meta">Multi-week programme</span>
+            <p>For a bigger move, step by step: positioning, CV and LinkedIn, networking and interviews.</p>
+            <a class="btn btn-outline" href="#book" data-package="change">Choose this option</a>
+          </article>
+        </div>
+        <p class="packages-note reveal">Pricing depends on the support you need. We discuss it on the free intro call, once we both know it's a good fit.</p>
       </div>
     </section>
 
@@ -990,6 +1064,7 @@
           <h2>Tell me what's holding you back.</h2>
           <p>A few quick questions about where you are now, what made you reach out, what would make our session truly valuable for you and when you're free. I read every answer personally and will get back to you by email to confirm a time.</p>
           <ul class="next-steps">
+            <li><svg><use href="#i-check-circle"/></svg><span>Start with a free 15-minute intro call – no commitment</span></li>
             <li><svg><use href="#i-check-circle"/></svg><span>Takes about 2 minutes</span></li>
             <li><svg><use href="#i-check-circle"/></svg><span>Your answers come directly to me</span></li>
             <li><svg><use href="#i-check-circle"/></svg><span>Prefer email? Reach me directly below</span></li>
@@ -1040,6 +1115,18 @@
                 <span class="bf-error" aria-live="polite"></span>
               </div>
             </div>
+
+            <fieldset class="bf-field" data-field="radio" data-label="Option you're interested in">
+              <legend>Which option are you interested in? <span class="req">*</span></legend>
+              <div class="bf-options">
+                <label class="bf-opt"><input type="radio" name="Option you're interested in" value="Free 15-minute intro call" data-package="call"><span>Free 15-minute intro call</span></label>
+                <label class="bf-opt"><input type="radio" name="Option you're interested in" value="Career Strategy Session" data-package="session"><span>Career Strategy Session</span></label>
+                <label class="bf-opt"><input type="radio" name="Option you're interested in" value="Interview Prep: MBB or Big Tech" data-package="interview"><span>Interview Prep: MBB or Big Tech</span></label>
+                <label class="bf-opt"><input type="radio" name="Option you're interested in" value="Career Change Programme" data-package="change"><span>Career Change Programme</span></label>
+                <label class="bf-opt"><input type="radio" name="Option you're interested in" value="Not sure yet – let's talk" data-package="unsure"><span>Not sure yet – let's talk</span></label>
+              </div>
+              <span class="bf-error" aria-live="polite"></span>
+            </fieldset>
 
             <fieldset class="bf-field" data-field="radio" data-label="1. What best describes you right now?">
               <legend>1. What best describes you right now? <span class="req">*</span></legend>
@@ -1118,7 +1205,7 @@
         <div class="faq-list">
           <details class="reveal">
             <summary>How do I book a career coach session?</summary>
-            <p>Click "Book a career coach session", answer a few quick questions and tell me when you're available – or email me directly. I read every request and will get back to you to confirm your session.</p>
+            <p>Click "Book a career coach session", choose the option you're interested in (or start with the free 15-minute intro call), answer a few quick questions and tell me when you're available – or email me directly. I read every request and will get back to you to confirm your session.</p>
           </details>
           <details class="reveal">
             <summary>Why do you ask questions before we meet?</summary>
@@ -1129,8 +1216,24 @@
             <p>Yes. Sessions take place online by video call, in English or Italian, so you can join from wherever you are.</p>
           </details>
           <details class="reveal">
-            <summary>How much does coaching cost?</summary>
-            <p>Pricing depends on the type and amount of support you need. I'll share the details when I get back to you to arrange your session.</p>
+            <summary>What's the investment?</summary>
+            <p>It depends on the support you need – a single session, an interview preparation package or a longer programme. We discuss it on the free 15-minute intro call, once we both know it's a good fit. There's no commitment.</p>
+          </details>
+          <details class="reveal">
+            <summary>Can you guarantee I'll get the job?</summary>
+            <p>No – and no honest coach can. Results depend on your background, your timing and the effort you put in. What I can promise is honest feedback, a clear plan and my full commitment to helping you give your best.</p>
+          </details>
+          <details class="reveal">
+            <summary>I've already been rejected by a top firm – is it too late?</summary>
+            <p>Not at all. A rejection shows you what to work on, and most firms let you reapply after a waiting period. We look honestly at what didn't land – your story, your cases or your behavioural answers – and build a plan so you're better prepared next time.</p>
+          </details>
+          <details class="reveal">
+            <summary>I don't have a network or contacts inside – can I still get in?</summary>
+            <p>Yes. A network helps, but you can build one. We work on who to reach out to, how to approach them in a way that feels natural, and how to make your application strong enough to stand on its own.</p>
+          </details>
+          <details class="reveal">
+            <summary>My background isn't classic consulting or tech – can I compete?</summary>
+            <p>Yes. My own path went from M&amp;A to consulting and then to Big Tech, so I know how to translate experience from one world to another. What matters is how you connect your background to the role: together we find your strengths and turn them into a story recruiters understand.</p>
           </details>
           <details class="reveal">
             <summary>I'm not targeting consulting or Big Tech – can you still help?</summary>
@@ -1144,8 +1247,8 @@
     <section class="cta">
       <div class="container">
         <div class="cta-box reveal">
-          <h2>Ready to unlock your potential?</h2>
-          <p>Tell me what's holding you back – and let's build your strategy for success.</p>
+          <h2>Your career is worth investing in.</h2>
+          <p>The right preparation today shapes the next years of your career. Start with a free 15-minute intro call: tell me what's holding you back and let's build your plan together.</p>
           <div class="hero-ctas">
             <a class="btn btn-primary" href="#book">Book a career coach session <svg><use href="#i-arrow"/></svg></a>
             <a class="btn btn-ghost" href="https://www.linkedin.com/in/francesca-lisi" target="_blank" rel="noopener"><svg><use href="#i-linkedin"/></svg>Connect on LinkedIn</a>
@@ -1197,6 +1300,12 @@
       document.getElementById('formOpen').addEventListener('click', openForm);
       document.querySelectorAll('a[href="#book"]').forEach((link) => link.addEventListener('click', (event) => {
         event.preventDefault();
+        // Buttons on the "Ways to work together" cards pre-select that option in the form.
+        const choice = link.dataset.package && form.querySelector('input[data-package="' + link.dataset.package + '"]');
+        if (choice && !choice.checked) {
+          choice.checked = true;
+          choice.dispatchEvent(new Event('change', { bubbles: true }));
+        }
         openForm();
       }));
 
