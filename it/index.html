@@ -1369,6 +1369,11 @@
       });
     })();
 
+    // Remember the language picked in the EN | IT switch, so the English page doesn't send the visitor back to Italian.
+    document.querySelectorAll('.lang-switch a').forEach((link) => link.addEventListener('click', () => {
+      try { localStorage.setItem('lang', link.hreflang); } catch (e) {}
+    }));
+
     // Sticky nav background
     const nav = document.getElementById('nav');
     const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 10);

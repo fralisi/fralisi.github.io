@@ -60,6 +60,20 @@
     ]
   }
   </script>
+  <!-- Visitors whose browser prefers Italian to English go to the Italian page, unless they picked EN in the EN | IT switch. -->
+  <script id="lang-redirect">
+    (function () {
+      try {
+        if (location.pathname.indexOf('/it/') === 0 || localStorage.getItem('lang') === 'en') return;
+        var langs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || ''];
+        for (var i = 0; i < langs.length; i++) {
+          var code = String(langs[i]).slice(0, 2).toLowerCase();
+          if (code === 'en') return;
+          if (code === 'it') { location.replace('/it/' + location.search + location.hash); return; }
+        }
+      } catch (e) {}
+    })();
+  </script>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f172a'/%3E%3Ctext x='50%25' y='55%25' font-family='Arial,sans-serif' font-weight='700' font-size='28' fill='%2338bdf8' text-anchor='middle' dominant-baseline='middle'%3EFL%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1367,6 +1381,11 @@
         done.focus({ preventScroll: true });
       });
     })();
+
+    // Remember the language picked in the EN | IT switch, so the English page doesn't send the visitor back to Italian.
+    document.querySelectorAll('.lang-switch a').forEach((link) => link.addEventListener('click', () => {
+      try { localStorage.setItem('lang', link.hreflang); } catch (e) {}
+    }));
 
     // Sticky nav background
     const nav = document.getElementById('nav');
