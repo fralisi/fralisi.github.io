@@ -157,6 +157,9 @@
       box-shadow: 0 1px 0 rgba(255, 255, 255, .06);
     }
     .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+    @media (min-width: 1321px) {
+      .nav-inner.container { width: min(1280px, 100% - 48px); }
+    }
     .brand { display: flex; align-items: center; gap: 12px; flex-shrink: 0; color: #fff; text-decoration: none; }
     .brand-mark {
       width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center;
@@ -233,16 +236,9 @@
       font-size: .88rem; font-weight: 600; line-height: 1.3; box-shadow: var(--shadow-lg);
     }
     .float-card small { display: block; font-weight: 500; font-size: .78rem; color: var(--muted); }
-    .float-card.one { left: -34px; bottom: 40px; }
     .float-card.two { right: -26px; top: 34px; }
     .float-card .icon-bubble { width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center; background: var(--sky-100); color: var(--sky-700); }
     .float-card .icon-bubble svg { width: 18px; height: 18px; }
-    .pulse { width: 10px; height: 10px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 0 0 rgba(34, 197, 94, .6); animation: pulse 2s infinite; }
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, .55); }
-      70% { box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
-    }
 
     /* About */
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
@@ -494,12 +490,11 @@
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       .js .reveal { opacity: 1; transform: none; transition: none; }
-      .pulse { animation: none; }
       .btn, .card, .promise li, .contact-list a, .obstacle { transition: none; }
     }
 
     /* Responsive */
-    @media (max-width: 1240px) {
+    @media (max-width: 1320px) {
       .nav-toggle { display: grid; }
       .nav-links {
         position: absolute; top: 76px; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 4px;
@@ -530,7 +525,6 @@
       .checklist, .tracks, .obstacle-grid { grid-template-columns: 1fr; }
       .obstacle-answer { padding: 28px 22px; }
       .obstacle-answer .btn { width: 100%; }
-      .float-card.one { left: -14px; bottom: 22px; }
       .float-card.two { right: -14px; top: 18px; }
       .hero-ctas .btn { width: 100%; }
       .booking-form { padding: 24px 20px 28px; }
@@ -596,7 +590,7 @@
         <li><a href="#how">Come funziona</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li class="lang-switch"><a href="/" hreflang="en" lang="en" aria-label="English">EN</a><a href="/it/" hreflang="it" lang="it" aria-label="Italiano" aria-current="true">IT</a></li>
-        <li><a class="btn btn-primary" href="#book">Prenota una sessione</a></li>
+        <li><a class="btn btn-primary" href="#book">Prenota una sessione di career coaching</a></li>
       </ul>
     </div>
   </header>
@@ -610,7 +604,7 @@
           <h1 class="reveal d1">Guida la tua carriera con <span class="accent">chiarezza e sicurezza.</span></h1>
           <p class="hero-lead reveal d2">Senti che la tua carriera è ferma, che il tuo lavoro non viene notato o non sai quale sia il prossimo passo? Come career coach, ti aiuto a individuare l'ostacolo che ti frena sul lavoro e a costruire un piano chiaro per superarlo – che tu stia cambiando direzione, entrando nel mondo del lavoro o puntando a un ruolo di alto livello.</p>
           <div class="hero-ctas reveal d3">
-            <a class="btn btn-primary" href="#book">Prenota una sessione <svg><use href="#i-arrow"/></svg></a>
+            <a class="btn btn-primary" href="#book">Prenota una sessione di career coaching <svg><use href="#i-arrow"/></svg></a>
             <a class="btn btn-ghost" href="#obstacle">Cosa ti frena?</a>
           </div>
           <ul class="hero-tags reveal d3">
@@ -623,10 +617,6 @@
         <div class="portrait reveal d2">
           <div class="portrait-frame">
             <img src="/assets/francesca-lisi.jpg" alt="Ritratto di Francesca Lisi, Career &amp; Executive Coach" width="900" height="1352" fetchpriority="high">
-          </div>
-          <div class="float-card one">
-            <span class="pulse" aria-hidden="true"></span>
-            <span>Accetto nuovi clienti<small>Prenotazioni aperte</small></span>
           </div>
           <div class="float-card two">
             <span class="icon-bubble"><svg><use href="#i-target"/></svg></span>
@@ -849,7 +839,7 @@
     <section id="book">
       <div class="container book-grid">
         <div class="book-info reveal">
-          <span class="eyebrow">Prenota una sessione</span>
+          <span class="eyebrow">Prenota una sessione di career coaching</span>
           <h2>Raccontami cosa ti frena.</h2>
           <p>Qualche domanda veloce: a che punto sei, cosa ti ha spinto a contattarmi, cosa renderebbe la nostra sessione davvero utile per te e quando sei disponibile. Leggo personalmente ogni risposta e ti scriverò via email per confermare l'orario.</p>
           <ul class="next-steps">
@@ -882,7 +872,7 @@
             <span class="icon-tile"><svg><use href="#i-calendar"/></svg></span>
             <h3>Vuoi prenotare la tua sessione?</h3>
             <p>Rispondi a qualche domanda veloce e dimmi quando sei disponibile. Poi ti scriverò via email per confermare la sessione.</p>
-            <button class="btn btn-primary" type="button" id="formOpen">Prenota una sessione <svg><use href="#i-arrow"/></svg></button>
+            <button class="btn btn-primary" type="button" id="formOpen">Prenota una sessione di career coaching <svg><use href="#i-arrow"/></svg></button>
           </div>
           <!-- Answers are emailed to Francesca via FormSubmit (formsubmit.co). See README. -->
           <form id="bookingForm" class="booking-form" action="https://formsubmit.co/lisi.francy@gmail.com" method="POST" tabindex="-1" novalidate>
@@ -981,7 +971,7 @@
         <div class="faq-list">
           <details class="reveal">
             <summary>Come prenoto una sessione di career coaching?</summary>
-            <p>Clicca su "Prenota una sessione", rispondi a qualche domanda veloce e dimmi quando sei disponibile, oppure scrivimi direttamente via email. Leggo ogni richiesta e ti risponderò per confermare la sessione.</p>
+            <p>Clicca su "Prenota una sessione di career coaching", rispondi a qualche domanda veloce e dimmi quando sei disponibile, oppure scrivimi direttamente via email. Leggo ogni richiesta e ti risponderò per confermare la sessione.</p>
           </details>
           <details class="reveal">
             <summary>Perché mi fai delle domande prima di incontrarci?</summary>
@@ -1010,7 +1000,7 @@
           <h2>Vuoi esprimere tutto il tuo potenziale?</h2>
           <p>Raccontami cosa ti frena e costruiamo insieme la tua strategia per il successo.</p>
           <div class="hero-ctas">
-            <a class="btn btn-primary" href="#book">Prenota una sessione <svg><use href="#i-arrow"/></svg></a>
+            <a class="btn btn-primary" href="#book">Prenota una sessione di career coaching <svg><use href="#i-arrow"/></svg></a>
             <a class="btn btn-ghost" href="https://www.linkedin.com/in/francesca-lisi" target="_blank" rel="noopener"><svg><use href="#i-linkedin"/></svg>Collegati su LinkedIn</a>
           </div>
         </div>
