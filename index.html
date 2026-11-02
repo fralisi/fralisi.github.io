@@ -369,6 +369,39 @@
     .fact strong { display: block; color: #fff; font-size: .98rem; }
     .fact span { font-size: .88rem; color: #94a3b8; }
 
+    /* Reviews */
+    .reviews { background: var(--soft); }
+    .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 48px; }
+    .reviews-grid:not(:has(.review)) { display: none; }
+    .review {
+      display: flex; flex-direction: column; gap: 16px; margin: 0; padding: 30px 28px;
+      border: 1px solid var(--line); border-radius: var(--radius); background: #fff;
+    }
+    .review-stars { display: flex; gap: 3px; color: #f59e0b; }
+    .review-stars svg { width: 18px; height: 18px; }
+    .review blockquote { flex: 1; margin: 0; color: var(--ink); }
+    .review figcaption strong { display: block; color: var(--ink); }
+    .review figcaption span { font-size: .88rem; color: var(--muted); }
+    .review-form-card { max-width: 760px; margin: 0 auto; }
+    .rating-row { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 14px; }
+    .rating { display: inline-flex; gap: 4px; }
+    .rating input { position: absolute; opacity: 0; width: 1px; height: 1px; pointer-events: none; }
+    .rating label { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 10px; color: #cbd5e1; cursor: pointer; transition: color .15s, transform .15s; }
+    .rating label svg { width: 32px; height: 32px; }
+    .rating label:hover { transform: scale(1.1); }
+    .rating input:focus-visible + label { outline: 2px solid var(--sky-500); outline-offset: 2px; }
+    .rating[data-show="1"] label:nth-of-type(-n+1),
+    .rating[data-show="2"] label:nth-of-type(-n+2),
+    .rating[data-show="3"] label:nth-of-type(-n+3),
+    .rating[data-show="4"] label:nth-of-type(-n+4),
+    .rating[data-show="5"] label:nth-of-type(-n+5) { color: #f59e0b; }
+    .rating-text { font-size: .92rem; font-weight: 600; color: var(--ink); }
+    .bf-consent { display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; border: 1px solid var(--line); border-radius: 12px; cursor: pointer; font-size: .93rem; line-height: 1.45; color: var(--ink); transition: border-color .2s, background-color .2s; }
+    .bf-consent:hover { border-color: var(--sky-300); }
+    .bf-consent:has(input:checked) { border-color: var(--sky-500); background: var(--sky-50); }
+    .bf-consent input { width: 18px; height: 18px; margin: 2px 0 0; flex-shrink: 0; accent-color: var(--sky-600); }
+    .bf-field.invalid .bf-consent { border-color: #fca5a5; }
+
     /* Booking */
     .book-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 56px; align-items: start; }
     .book-info { position: sticky; top: 110px; }
@@ -514,7 +547,7 @@
       .portrait { width: min(360px, 82%); }
       .about-grid { gap: 40px; }
       .premium-card { padding: 44px 32px 44px 40px; gap: 36px; }
-      .cards, .steps, .facts { grid-template-columns: 1fr; }
+      .cards, .steps, .facts, .reviews-grid { grid-template-columns: 1fr; }
       .obstacle-grid { grid-template-columns: 1fr 1fr; }
       .obstacle-answer { grid-template-columns: 1fr; padding: 32px; }
       .book-info { position: static; }
@@ -834,6 +867,107 @@
       </div>
     </section>
 
+    <!-- Reviews -->
+    <section id="reviews" class="reviews">
+      <div class="container">
+        <div class="section-head center reveal">
+          <span class="eyebrow">Reviews</span>
+          <h2>What my clients say.</h2>
+          <p>Real feedback from the people I coach and mentor – published only with their permission.</p>
+        </div>
+
+        <!-- Published reviews. The grid stays hidden until it contains at least one review.
+             To publish a review you have permission to share, copy the template, fill it in and remove the comment markers.
+             Keep the number of star icons equal to the rating. See README. -->
+        <div class="reviews-grid">
+          <!--
+          <figure class="review reveal">
+            <div class="review-stars" role="img" aria-label="Rated 5 out of 5"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
+            <blockquote>"Review text, exactly as the client wrote it."</blockquote>
+            <figcaption><strong>Name or initials</strong><span>Role or headline</span></figcaption>
+          </figure>
+          -->
+        </div>
+
+        <div class="form-card review-form-card reveal">
+          <div class="form-card-head">
+            <strong>Leave a review</strong>
+            <span>About 1 minute</span>
+          </div>
+          <div class="form-start" id="reviewStart" hidden>
+            <span class="icon-tile"><svg><use href="#i-star"/></svg></span>
+            <h3>Had a session with me?</h3>
+            <p>Reviews from my coaching and mentorship sessions will appear here. I'd love to hear how yours went – it only takes a minute.</p>
+            <button class="btn btn-primary" type="button" id="reviewOpen">Leave a review <svg><use href="#i-arrow"/></svg></button>
+          </div>
+          <!-- Reviews are emailed to Francesca via FormSubmit and are never published automatically. -->
+          <form id="reviewForm" class="booking-form review-form" action="https://formsubmit.co/lisi.francy@gmail.com" method="POST" tabindex="-1" novalidate>
+            <input type="hidden" name="_subject" value="New review from your website">
+            <input type="hidden" name="_template" value="table">
+            <input type="text" name="_honey" class="bf-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+            <div class="bf-row">
+              <div class="bf-field" data-field="text" data-label="Name to display" data-msg="Please add your name or initials.">
+                <label class="bf-label" for="rv-name">Your name <span class="req">*</span></label>
+                <p class="bf-help">As you'd like it to appear – initials are fine.</p>
+                <input id="rv-name" name="Name to display" type="text" autocomplete="name" required>
+                <span class="bf-error" aria-live="polite"></span>
+              </div>
+              <div class="bf-field" data-field="email" data-label="email" data-msg="Please add your email address." data-msg-invalid="Please enter a valid email address.">
+                <label class="bf-label" for="rv-email">Email address <span class="req">*</span></label>
+                <p class="bf-help">Only so I can thank you – never shown.</p>
+                <input id="rv-email" name="email" type="email" autocomplete="email" required>
+                <span class="bf-error" aria-live="polite"></span>
+              </div>
+            </div>
+
+            <div class="bf-field" data-field="text" data-label="Role or headline" data-optional>
+              <label class="bf-label" for="rv-role">Role or headline (optional)</label>
+              <input id="rv-role" name="Role or headline" type="text" autocomplete="organization-title" placeholder="e.g. Product Manager, Big Tech">
+            </div>
+
+            <fieldset class="bf-field" data-field="rating" data-label="Rating" data-msg="Please choose a rating.">
+              <legend>Your rating <span class="req">*</span></legend>
+              <div class="rating-row">
+                <div class="rating">
+                  <input type="radio" id="rv-r1" name="Rating" value="1"><label for="rv-r1" title="Poor"><span class="sr-only">1 star – Poor</span><svg aria-hidden="true"><use href="#i-star"/></svg></label>
+                  <input type="radio" id="rv-r2" name="Rating" value="2"><label for="rv-r2" title="Fair"><span class="sr-only">2 stars – Fair</span><svg aria-hidden="true"><use href="#i-star"/></svg></label>
+                  <input type="radio" id="rv-r3" name="Rating" value="3"><label for="rv-r3" title="Good"><span class="sr-only">3 stars – Good</span><svg aria-hidden="true"><use href="#i-star"/></svg></label>
+                  <input type="radio" id="rv-r4" name="Rating" value="4"><label for="rv-r4" title="Very good"><span class="sr-only">4 stars – Very good</span><svg aria-hidden="true"><use href="#i-star"/></svg></label>
+                  <input type="radio" id="rv-r5" name="Rating" value="5"><label for="rv-r5" title="Excellent"><span class="sr-only">5 stars – Excellent</span><svg aria-hidden="true"><use href="#i-star"/></svg></label>
+                </div>
+                <span class="rating-text" aria-hidden="true"></span>
+              </div>
+              <span class="bf-error" aria-live="polite"></span>
+            </fieldset>
+
+            <div class="bf-field" data-field="text" data-label="Review" data-msg="Please write a few words about your experience.">
+              <label class="bf-label" for="rv-text">Your review <span class="req">*</span></label>
+              <p class="bf-help">What did we work on, and what changed for you?</p>
+              <textarea id="rv-text" name="Review" required></textarea>
+              <span class="bf-error" aria-live="polite"></span>
+            </div>
+
+            <div class="bf-field" data-field="consent" data-label="Permission to publish" data-msg="Please confirm I can publish your review." data-yes="Yes – review, name and role may be published on the website">
+              <label class="bf-consent"><input type="checkbox" name="Permission to publish" value="yes" required><span>I agree that my review, name and role may be published on this website. My email address will never be shown. <span class="req">*</span></span></label>
+              <span class="bf-error" aria-live="polite"></span>
+            </div>
+
+            <div class="bf-submit">
+              <button class="btn btn-primary" type="submit">Send my review <svg><use href="#i-arrow"/></svg></button>
+              <p class="bf-note">I read every review personally and only publish it with your permission.</p>
+            </div>
+          </form>
+          <div class="form-done" id="reviewDone" tabindex="-1" hidden>
+            <span class="icon-tile"><svg><use href="#i-check-circle"/></svg></span>
+            <h3>Thank you for your review!</h3>
+            <p>I really appreciate you taking the time to share your experience.</p>
+            <p class="bf-alert" id="reviewWarn" role="alert" hidden>Sorry, your review may not have reached me. Please email it to me at <a href="mailto:lisi.francy@gmail.com?subject=Review">lisi.francy@gmail.com</a>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Booking -->
     <section id="book">
       <div class="container book-grid">
@@ -1126,6 +1260,104 @@
           .then((res) => { if (!res.ok) console.warn('Booking form: FormSubmit replied HTTP ' + res.status); })
           .catch((err) => {
             console.error('Booking form error:', err);
+            warn.hidden = false;
+          });
+
+        form.hidden = true;
+        done.hidden = false;
+        card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        done.focus({ preventScroll: true });
+      });
+    })();
+
+    // Review form: reviews are emailed to Francesca via FormSubmit and never published automatically.
+    (function setUpReviewForm() {
+      const form = document.getElementById('reviewForm');
+      if (!form) return;
+      const start = document.getElementById('reviewStart');
+      const done = document.getElementById('reviewDone');
+      const warn = document.getElementById('reviewWarn');
+      const card = form.closest('.form-card');
+      const fields = [...form.querySelectorAll('[data-field]')];
+      const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+      form.hidden = true;
+      start.hidden = false;
+      document.getElementById('reviewOpen').addEventListener('click', () => {
+        start.hidden = true;
+        form.hidden = false;
+        form.focus({ preventScroll: true });
+        card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+
+      // Star rating: fill the stars up to the hovered or chosen one.
+      const rating = form.querySelector('.rating');
+      const ratingText = form.querySelector('.rating-text');
+      const chosen = () => rating.querySelector('input:checked');
+      const show = (input) => {
+        rating.dataset.show = input ? input.value : '';
+        ratingText.textContent = input ? input.nextElementSibling.title : '';
+      };
+      rating.querySelectorAll('label').forEach((label) =>
+        label.addEventListener('mouseenter', () => show(label.previousElementSibling)));
+      rating.addEventListener('mouseleave', () => show(chosen()));
+      rating.addEventListener('change', () => show(chosen()));
+
+      function valueOf(field) {
+        const type = field.dataset.field;
+        if (type === 'rating') {
+          const input = chosen();
+          return input ? input.value + '/5 – ' + input.nextElementSibling.title : '';
+        }
+        if (type === 'consent') return field.querySelector('input').checked ? field.dataset.yes : '';
+        return field.querySelector('input, textarea').value.trim();
+      }
+
+      function check(field) {
+        if (field.hasAttribute('data-optional')) return true;
+        const value = valueOf(field);
+        let msg = '';
+        if (!value) msg = field.dataset.msg;
+        else if (field.dataset.field === 'email' && !EMAIL_RE.test(value)) msg = field.dataset.msgInvalid;
+        field.classList.toggle('invalid', !!msg);
+        field.querySelector('.bf-error').textContent = msg;
+        return !msg;
+      }
+
+      fields.forEach((field) => {
+        field.addEventListener('change', () => { if (field.classList.contains('invalid')) check(field); });
+        field.addEventListener('input', () => { if (field.classList.contains('invalid')) check(field); });
+      });
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const invalid = fields.filter((field) => !check(field));
+        if (invalid.length) {
+          invalid[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+          invalid[0].querySelector('input, textarea').focus({ preventScroll: true });
+          return;
+        }
+
+        const data = {
+          _subject: 'New review from ' + valueOf(fields[0]),
+          _template: 'table',
+          _honey: form.querySelector('.bf-honey').value
+        };
+        fields.forEach((field) => {
+          const value = valueOf(field);
+          if (value) data[field.dataset.label] = value;
+        });
+
+        // Same approach as the booking form: thank the visitor straight away and let the request finish in the background.
+        fetch(FORM_ENDPOINT, {
+          method: 'POST',
+          headers: { Accept: 'application/json' },
+          body: new URLSearchParams(data),
+          keepalive: true
+        })
+          .then((res) => { if (!res.ok) console.warn('Review form: FormSubmit replied HTTP ' + res.status); })
+          .catch((err) => {
+            console.error('Review form error:', err);
             warn.hidden = false;
           });
 
