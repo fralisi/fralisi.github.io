@@ -254,20 +254,12 @@
     .float-card .icon-bubble svg { width: 18px; height: 18px; }
 
     /* About */
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
-    .about-grid .promise { position: sticky; top: 110px; }
-    .about-grid h2 { font-size: clamp(1.9rem, 3.2vw, 2.6rem); margin-top: 14px; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+    .about-head h2 { font-size: clamp(1.9rem, 3.2vw, 2.6rem); margin: 14px 0 16px; }
+    .about-head h2 .accent { color: var(--sky-600); }
+    .about-sub { margin: 0; font: 600 1.2rem/1.45 "Plus Jakarta Sans", Inter, sans-serif; color: var(--sky-700); }
     .about-text p { font-size: 1.1rem; }
-    .about-text p.big { font-size: 1.28rem; color: var(--ink); font-weight: 500; line-height: 1.55; }
-    .promise { display: grid; gap: 16px; margin: 0; padding: 0; list-style: none; }
-    .promise li {
-      display: flex; gap: 16px; align-items: flex-start; padding: 22px 24px;
-      border: 1px solid var(--line); border-radius: var(--radius); background: #fff;
-      transition: border-color .2s, box-shadow .2s, transform .2s;
-    }
-    .promise li:hover { border-color: var(--sky-200); box-shadow: var(--shadow); transform: translateY(-2px); }
-    .promise strong { display: block; color: var(--ink); font-size: 1.02rem; margin-bottom: 2px; }
-    .promise span { font-size: .95rem; }
+    .about-text p.big { margin: 0; padding-left: 20px; border-left: 3px solid var(--sky-400); font-size: 1.22rem; color: var(--ink); font-weight: 500; line-height: 1.55; }
     .icon-tile {
       width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center; flex-shrink: 0;
       background: linear-gradient(135deg, var(--sky-50), var(--sky-100)); color: var(--sky-700);
@@ -300,8 +292,7 @@
       color: var(--sky-700); background: #fff; border: 1px solid var(--sky-200);
     }
 
-    /* Services */
-    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    /* Cards */
     .card {
       position: relative; padding: 34px 30px; border-radius: var(--radius);
       background: #fff; border: 1px solid var(--line);
@@ -310,96 +301,35 @@
     .card:hover { transform: translateY(-6px); box-shadow: var(--shadow); border-color: var(--sky-200); }
     .card h3 { font-size: 1.25rem; margin: 22px 0 10px; }
     .card p { margin: 0; }
-    .card .num { position: absolute; top: 26px; right: 28px; font: 800 2.4rem "Plus Jakarta Sans", sans-serif; color: var(--sky-100); }
-
-    /* Premium */
-    .premium { background: linear-gradient(180deg, #fff, var(--sky-50)); }
-    .premium-card {
-      position: relative; overflow: hidden; display: grid; grid-template-columns: .9fr 1.1fr; gap: 56px;
-      padding: 60px 56px 60px 64px; border-radius: 28px;
-      background: #fff; border: 1px solid var(--sky-100); box-shadow: var(--shadow);
-    }
-    .premium-card::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 6px; background: linear-gradient(180deg, var(--sky-400), var(--sky-700)); }
-    .premium-card::after {
-      content: ""; position: absolute; right: -120px; top: -120px; width: 340px; height: 340px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(56, 189, 248, .14), transparent 70%); pointer-events: none;
-    }
     .badge {
       display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: 999px;
       font-size: .76rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
       color: var(--sky-700); background: var(--sky-100);
     }
     .badge svg { width: 14px; height: 14px; }
-    .premium h2 { font-size: clamp(1.9rem, 3.2vw, 2.5rem); margin: 18px 0 16px; }
-    .premium-lead { font-size: 1.08rem; }
-    .tracks { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 24px 0 26px; padding: 0; list-style: none; }
-    .tracks li { display: flex; flex-direction: column; gap: 12px; padding: 18px; border-radius: 16px; background: var(--soft); border: 1px solid var(--line); }
-    .tracks .icon-tile { width: 40px; height: 40px; border-radius: 12px; }
-    .tracks .icon-tile svg { width: 20px; height: 20px; }
-    .tracks strong { display: block; color: var(--ink); font: 700 1.02rem/1.25 "Plus Jakarta Sans", sans-serif; }
-    .tracks small { display: block; margin-top: 4px; font-size: .84rem; line-height: 1.4; color: var(--muted); }
-    .tagline { font: 700 1.2rem "Plus Jakarta Sans", sans-serif; color: var(--sky-700); font-style: italic; margin: 0; }
-    .checklist { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 0; padding: 0; list-style: none; position: relative; z-index: 1; }
-    .checklist li { padding: 24px; border-radius: 18px; background: var(--sky-50); border: 1px solid var(--sky-100); }
-    .checklist .check {
-      width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; margin-bottom: 14px;
-      color: #fff; background: linear-gradient(135deg, var(--sky-500), var(--sky-700));
-    }
-    .checklist .check svg { width: 18px; height: 18px; }
-    .checklist strong { display: block; color: var(--ink); font-size: 1.02rem; margin-bottom: 6px; }
-    .checklist span { font-size: .94rem; }
-
-    /* Who */
-    .who-card { text-align: left; }
-    .who-card .icon-tile { width: 56px; height: 56px; border-radius: 16px; }
-    .who-card .icon-tile svg { width: 26px; height: 26px; }
-    .who-card .tag { display: inline-block; margin-top: 18px; font-size: .82rem; font-weight: 600; color: var(--sky-700); }
-
-    /* How it works */
-    .how { background: var(--navy-900); color: #cbd5e1; position: relative; overflow: hidden; }
-    .how::before {
-      content: ""; position: absolute; inset: 0; pointer-events: none;
-      background: radial-gradient(900px 460px at 50% 0%, rgba(56, 189, 248, .16), transparent 65%);
-    }
-    .how .container { position: relative; }
-    .how h2 { color: #fff; }
-    .how .eyebrow { color: var(--sky-400); }
-    .how .section-head p { color: #94a3b8; }
-    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin: 0; padding: 0; list-style: none; counter-reset: step; position: relative; }
-    .steps li {
-      position: relative; padding: 32px 28px; border-radius: var(--radius);
-      background: rgba(255, 255, 255, .04); border: 1px solid rgba(255, 255, 255, .08);
-    }
-    .steps li::before {
-      counter-increment: step; content: counter(step, decimal-leading-zero);
-      display: inline-grid; place-items: center; width: 52px; height: 52px; border-radius: 16px; margin-bottom: 20px;
-      font: 800 1.05rem "Plus Jakarta Sans", sans-serif; color: #fff;
-      background: linear-gradient(135deg, var(--sky-500), var(--sky-700));
-      box-shadow: 0 10px 24px -10px rgba(14, 165, 233, .8);
-    }
-    .steps h3 { color: #fff; font-size: 1.2rem; }
-    .steps p { margin: 0; color: #94a3b8; }
-    .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
-    .fact { display: flex; gap: 14px; align-items: center; padding: 18px 22px; border-radius: 16px; border: 1px dashed rgba(255, 255, 255, .16); }
-    .fact svg { width: 22px; height: 22px; color: var(--sky-400); }
-    .fact strong { display: block; color: #fff; font-size: .98rem; }
-    .fact span { font-size: .88rem; color: #94a3b8; }
 
     /* Packages */
+    .packages { background: linear-gradient(180deg, #fff, var(--sky-50)); }
     .packages-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
     .package { display: flex; flex-direction: column; padding: 30px 26px; }
     .package.featured { border-color: var(--sky-300); background: linear-gradient(180deg, var(--sky-50), #fff 60%); }
     .package .badge { position: absolute; top: 26px; right: 22px; }
     .package h3 { margin: 20px 0 6px; }
     .package .pkg-meta { display: block; margin-bottom: 12px; font-size: .84rem; font-weight: 700; color: var(--sky-700); }
-    .package p { flex: 1; margin: 0 0 24px; }
-    .package .btn { width: 100%; padding: 12px 18px; font-size: .93rem; }
+    .package p { margin: 0 0 18px; }
+    .pkg-list { display: grid; gap: 8px; margin: 0 0 24px; padding: 0; list-style: none; font-size: .92rem; color: var(--ink); }
+    .pkg-list li { display: flex; gap: 10px; align-items: flex-start; line-height: 1.4; }
+    .pkg-list svg { width: 16px; height: 16px; margin-top: 2px; color: var(--sky-600); }
+    .package .btn { width: 100%; margin-top: auto; padding: 12px 18px; font-size: .93rem; }
     .packages-note { max-width: 640px; margin: 36px auto 0; text-align: center; }
 
     /* Reviews */
     .reviews { background: var(--soft); }
     .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 48px; }
     .reviews-grid:not(:has(.review)) { display: none; }
+    /* Until the first review is published, only a compact "Leave a review" box is shown. */
+    .reviews:not(:has(.review)) { padding-top: 0; }
+    .reviews:not(:has(.review)) .section-head { display: none; }
     .review {
       display: flex; flex-direction: column; gap: 16px; margin: 0; padding: 30px 28px;
       border: 1px solid var(--line); border-radius: var(--radius); background: #fff;
@@ -410,6 +340,14 @@
     .review figcaption strong { display: block; color: var(--ink); }
     .review figcaption span { font-size: .88rem; color: var(--muted); }
     .review-form-card { max-width: 760px; margin: 0 auto; }
+    .review-form-card:has(#reviewStart:not([hidden])) .form-card-head { display: none; }
+    .review-form-card .form-start { display: flex; align-items: center; gap: 20px; padding: 24px 28px; text-align: left; }
+    .review-form-card .form-start .icon-tile { margin: 0; width: 52px; height: 52px; border-radius: 16px; }
+    .review-form-card .form-start .icon-tile svg { width: 24px; height: 24px; }
+    .review-form-card .form-start > div { flex: 1; }
+    .review-form-card .form-start h3 { font-size: 1.15rem; margin-bottom: 4px; }
+    .review-form-card .form-start p { max-width: none; margin: 0; font-size: .95rem; }
+    .review-form-card .form-start .btn { flex-shrink: 0; }
     .rating-row { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 14px; }
     .rating { display: inline-flex; gap: 4px; }
     .rating input { position: absolute; opacity: 0; width: 1px; height: 1px; pointer-events: none; }
@@ -433,9 +371,16 @@
     .book-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 56px; align-items: start; }
     .book-info { position: sticky; top: 110px; }
     .book-info h2 { font-size: clamp(1.9rem, 3.2vw, 2.6rem); margin-top: 14px; }
-    .next-steps { margin: 26px 0 30px; padding: 0; list-style: none; display: grid; gap: 14px; }
-    .next-steps li { display: flex; gap: 12px; align-items: flex-start; }
-    .next-steps svg { width: 22px; height: 22px; color: var(--sky-600); margin-top: 2px; }
+    .book-steps { display: grid; gap: 14px; margin: 26px 0 30px; padding: 0; list-style: none; counter-reset: step; }
+    .book-steps li { display: grid; grid-template-columns: 40px 1fr; column-gap: 14px; }
+    .book-steps li::before {
+      counter-increment: step; content: counter(step);
+      grid-row: span 2; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 12px;
+      font: 800 .98rem "Plus Jakarta Sans", sans-serif; color: #fff;
+      background: linear-gradient(135deg, var(--sky-500), var(--sky-700));
+    }
+    .book-steps strong { align-self: end; color: var(--ink); line-height: 1.3; }
+    .book-steps span { align-self: start; font-size: .9rem; color: var(--muted); line-height: 1.35; }
     .contact-list { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
     .contact-list a {
       display: flex; align-items: center; gap: 14px; padding: 14px 18px; border-radius: 14px;
@@ -549,7 +494,7 @@
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       .js .reveal { opacity: 1; transform: none; transition: none; }
-      .btn, .card, .promise li, .contact-list a, .obstacle { transition: none; }
+      .btn, .card, .contact-list a, .obstacle { transition: none; }
     }
 
     /* Responsive */
@@ -572,20 +517,18 @@
     @media (max-width: 980px) {
       section { padding: 84px 0; }
       .hero { padding: 132px 0 88px; }
-      .hero-grid, .about-grid, .premium-card, .book-grid { grid-template-columns: 1fr; }
+      .hero-grid, .about-grid, .book-grid { grid-template-columns: 1fr; }
       .hero-grid { gap: 72px; }
       .portrait { width: min(360px, 82%); }
-      .about-grid { gap: 40px; }
-      .about-grid .promise { position: static; }
-      .premium-card { padding: 44px 32px 44px 40px; gap: 36px; }
-      .cards, .steps, .facts, .reviews-grid { grid-template-columns: 1fr; }
+      .about-grid { gap: 28px; }
+      .reviews-grid { grid-template-columns: 1fr; }
       .obstacle-grid { grid-template-columns: 1fr 1fr; }
       .obstacle-answer { grid-template-columns: 1fr; padding: 32px; }
       .book-info { position: static; }
     }
     @media (max-width: 560px) {
       .container { width: calc(100% - 36px); }
-      .checklist, .tracks, .obstacle-grid, .packages-grid { grid-template-columns: 1fr; }
+      .obstacle-grid, .packages-grid { grid-template-columns: 1fr; }
       .obstacle-answer { padding: 28px 22px; }
       .obstacle-answer .btn { width: 100%; }
       .float-card.two { right: -14px; top: 18px; }
@@ -594,6 +537,7 @@
       .bf-row, .bf-options { grid-template-columns: 1fr; }
       .form-done, .form-start { padding: 44px 22px; }
       .form-start .btn { width: 100%; }
+      .review-form-card .form-start { flex-direction: column; padding: 32px 22px; text-align: center; }
       .cta-box { padding: 56px 22px; }
     }
   </style>
@@ -604,31 +548,22 @@
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
     <defs>
       <symbol id="i-compass" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m16.24 7.76-2.12 6.36-6.36 2.12 2.12-6.36z"/></symbol>
-      <symbol id="i-file" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h5"/></symbol>
       <symbol id="i-route" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/></symbol>
       <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
       <symbol id="i-check-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8.5 12 2.5 2.5 4.5-5"/></symbol>
-      <symbol id="i-briefcase" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></symbol>
-      <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></symbol>
-      <symbol id="i-grad" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></symbol>
       <symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
-      <symbol id="i-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.6L19.5 10l-5.6 1.9L12 17.5l-1.9-5.6L4.5 10l5.6-1.4z"/><path d="M19 17l.8 2.2L22 20l-2.2.8L19 23l-.8-2.2L16 20l2.2-.8z"/></symbol>
-      <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol>
       <symbol id="i-star" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></symbol>
       <symbol id="i-video" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="m22 8-6 4 6 4z"/></symbol>
       <symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
-      <symbol id="i-tag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L2 12V2h10l8.6 8.6a2 2 0 0 1 0 2.8z"/><circle cx="7" cy="7" r="1.5"/></symbol>
       <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></symbol>
       <symbol id="i-linkedin" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></symbol>
       <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
-      <symbol id="i-external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol>
       <symbol id="i-pause" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M10 15V9M14 15V9"/></symbol>
       <symbol id="i-eye-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><path d="M1 1l22 22"/></symbol>
       <symbol id="i-inbox" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></symbol>
       <symbol id="i-x-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6M9 9l6 6"/></symbol>
       <symbol id="i-help" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01"/></symbol>
       <symbol id="i-battery" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="16" height="10" rx="2"/><path d="M22 11v2M6 11v2"/></symbol>
-      <symbol id="i-cpu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></symbol>
       <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
       <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></symbol>
     </defs>
@@ -647,10 +582,7 @@
       <ul class="nav-links" id="navLinks">
         <li><a href="#about">About</a></li>
         <li><a href="#obstacle">Your Obstacle</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#interview-prep">Interview Prep</a></li>
-        <li><a href="#who">Who I Work With</a></li>
-        <li><a href="#how">How It Works</a></li>
+        <li><a href="#packages">Work with me</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li class="lang-switch"><a href="/" hreflang="en" lang="en" aria-label="English" aria-current="true">EN</a><a href="/it/" hreflang="it" lang="it" aria-label="Italiano">IT</a></li>
         <li><a class="btn btn-primary" href="#book">Book a career coach session</a></li>
@@ -664,8 +596,8 @@
       <div class="container hero-grid">
         <div>
           <span class="eyebrow reveal">Career Coaching &amp; Mentorship</span>
-          <h1 class="reveal d1">Navigate your career with <span class="accent">clarity and confidence.</span></h1>
-          <p class="hero-lead reveal d2">Feeling stuck, overlooked or unsure what's next? As a career coach and mentor, I help you pinpoint the obstacle holding you back at work and build a clear plan to move past it – whether you are changing direction, entering the job market or aiming for a top-tier role.</p>
+          <h1 class="reveal d1">Navigate your career with <span class="accent">clarity and purpose.</span></h1>
+          <p class="hero-lead reveal d2">Stuck, overlooked or unsure what's next? As your career coach and mentor, I help you pinpoint what's holding you back at work and build a clear plan to move past it.</p>
           <div class="hero-ctas reveal d3">
             <a class="btn btn-primary" href="#book">Book a career coach session <svg><use href="#i-arrow"/></svg></a>
             <a class="btn btn-ghost" href="#obstacle">What's holding you back?</a>
@@ -692,27 +624,15 @@
     <!-- About -->
     <section id="about">
       <div class="container about-grid">
-        <div class="about-text reveal">
+        <div class="about-head reveal">
           <span class="eyebrow">About me</span>
-          <h2>I've been through the interviews I'll prepare you for.</h2>
-          <p>I'm Francesca, a former MBB consultant. Today I lead a global team in Go-to-Market strategy in Big Tech, and throughout my career I've coached several people on their own career paths. In my current role I also interview candidates, so I see first-hand what makes someone stand out.</p>
-          <p>So I know both worlds from the inside: case interviews and fit questions in consulting, and the structured, behavioural interviews of Big Tech. I also know what it's like to change industry, move country and wonder whether your profile is ‘right’.</p>
-          <p class="big">What I've seen is that strong people are rarely held back by a lack of potential. They're held back by a story that doesn't land, no clear plan and too little realistic practice. That's what we work on together.</p>
+          <h2>Join an MBB firm or Big Tech <span class="accent">with confidence.</span></h2>
+          <p class="about-sub">I've been the candidate. Now I'm the interviewer.</p>
         </div>
-        <ul class="promise">
-          <li class="reveal d1">
-            <span class="icon-tile"><svg><use href="#i-compass"/></svg></span>
-            <span><strong>Clarity</strong>Pinpoint what is really holding you back and where you want to go next.</span>
-          </li>
-          <li class="reveal d2">
-            <span class="icon-tile"><svg><use href="#i-route"/></svg></span>
-            <span><strong>A concrete plan</strong>Turn ambitions into a practical, step-by-step roadmap you can act on.</span>
-          </li>
-          <li class="reveal d3">
-            <span class="icon-tile"><svg><use href="#i-shield"/></svg></span>
-            <span><strong>Confidence</strong>Walk into every application and interview prepared, polished and ready.</span>
-          </li>
-        </ul>
+        <div class="about-text reveal d1">
+          <p>I'm Francesca, a former MBB consultant. Today I lead a global Go-to-Market strategy team in Big Tech, where I also interview candidates. Along the way, I've coached several people through their own career moves.</p>
+          <p class="big">Strong people rarely lack potential. What holds them back is a story that doesn't land, no clear plan and too little practice. That's what we fix together.</p>
+        </div>
       </div>
     </section>
 
@@ -722,7 +642,7 @@
         <div class="section-head center reveal">
           <span class="eyebrow">What's holding you back?</span>
           <h2>What's your obstacle at work?</h2>
-          <p>Most people I work with don't lack talent or ambition – something specific is standing in their way. Does any of this sound familiar?</p>
+          <p>Does any of this sound familiar? Pick the one that fits and tell me more.</p>
         </div>
         <ul class="obstacle-grid">
           <li class="reveal"><a class="obstacle" href="#book" data-obstacle>
@@ -779,147 +699,13 @@
       </div>
     </section>
 
-    <!-- Services -->
-    <section id="services" class="services">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="eyebrow">Core services</span>
-          <h2>Everything you need to move your career forward.</h2>
-          <p>Practical, tailored support at every stage – from finding the right opportunities to securing the offer.</p>
-        </div>
-        <div class="cards">
-          <article class="card reveal">
-            <span class="num" aria-hidden="true">01</span>
-            <span class="icon-tile"><svg><use href="#i-search"/></svg></span>
-            <h3>Job Search Strategy</h3>
-            <p>Navigate the market to identify and secure opportunities tailored to your unique skills and aspirations.</p>
-          </article>
-          <article class="card reveal d1">
-            <span class="num" aria-hidden="true">02</span>
-            <span class="icon-tile"><svg><use href="#i-file"/></svg></span>
-            <h3>CV &amp; Resume Review</h3>
-            <p>Craft compelling, high-impact resumes that stand out to recruiters, ATS systems and hiring managers.</p>
-          </article>
-          <article class="card reveal d2">
-            <span class="num" aria-hidden="true">03</span>
-            <span class="icon-tile"><svg><use href="#i-route"/></svg></span>
-            <h3>Actionable Planning</h3>
-            <p>Turn vague career aspirations into a concrete, step-by-step roadmap for success.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Premium Interview Preparation -->
-    <section id="interview-prep" class="premium">
-      <div class="container">
-        <div class="premium-card reveal">
-          <div>
-            <span class="badge"><svg><use href="#i-star"/></svg>Premium</span>
-            <h2>Premium Interview Preparation</h2>
-            <p class="premium-lead">Specialised, end-to-end coaching and mentorship for two of the most competitive recruiting processes – with equal depth for both.</p>
-            <ul class="tracks" aria-label="Interview preparation tracks">
-              <li>
-                <span class="icon-tile"><svg><use href="#i-briefcase"/></svg></span>
-                <span><strong>MBB Consulting</strong><small>McKinsey, BCG, Bain and other top-tier firms</small></span>
-              </li>
-              <li>
-                <span class="icon-tile"><svg><use href="#i-cpu"/></svg></span>
-                <span><strong>Big Tech</strong><small>The world's leading technology companies</small></span>
-              </li>
-            </ul>
-            <p class="tagline">“We leave nothing to chance.”</p>
-          </div>
-          <ul class="checklist">
-            <li>
-              <span class="check"><svg><use href="#i-check"/></svg></span>
-              <strong>Case &amp; Problem-Solving Interviews</strong>
-              <span>Analytical structuring, frameworks and executive communication – for consulting cases and tech business problems alike.</span>
-            </li>
-            <li>
-              <span class="check"><svg><use href="#i-check"/></svg></span>
-              <strong>Behavioural Questions</strong>
-              <span>High-impact storytelling aligned with each company's culture and leadership principles.</span>
-            </li>
-            <li>
-              <span class="check"><svg><use href="#i-check"/></svg></span>
-              <strong>End-to-End Mock Interviews</strong>
-              <span>Realistic simulations that mirror the real interview experience.</span>
-            </li>
-            <li>
-              <span class="check"><svg><use href="#i-check"/></svg></span>
-              <strong>Comprehensive Feedback</strong>
-              <span>Actionable, detailed critiques so you know exactly what to improve.</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Who I Work With -->
-    <section id="who">
-      <div class="container">
-        <div class="section-head center reveal">
-          <span class="eyebrow">Who I work with</span>
-          <h2>Support for every stage of your career.</h2>
-        </div>
-        <div class="cards">
-          <article class="card who-card reveal">
-            <span class="icon-tile"><svg><use href="#i-briefcase"/></svg></span>
-            <h3>Professionals</h3>
-            <p>Accelerate your trajectory, transition into new industries or step confidently into leadership roles.</p>
-          </article>
-          <article class="card who-card reveal d1">
-            <span class="icon-tile"><svg><use href="#i-search"/></svg></span>
-            <h3>Job Seekers</h3>
-            <p>Gain a competitive edge in a crowded market and land your ideal role at top-tier organisations.</p>
-          </article>
-          <article class="card who-card reveal d2">
-            <span class="icon-tile"><svg><use href="#i-grad"/></svg></span>
-            <h3>Students &amp; Grads</h3>
-            <p>Find direction, bridge the gap between academia and business, and build foundational career strategies.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- How it works -->
-    <section id="how" class="how">
-      <div class="container">
-        <div class="section-head center reveal">
-          <span class="eyebrow">How it works</span>
-          <h2>From first conversation to your next role.</h2>
-          <p>A simple, personal process built around your goals and your schedule.</p>
-        </div>
-        <ol class="steps">
-          <li class="reveal">
-            <h3>Tell me what's holding you back</h3>
-            <p>Fill in a 2-minute form: where you are now, what you would like to work on and when you are available.</p>
-          </li>
-          <li class="reveal d1">
-            <h3>Your free intro call</h3>
-            <p>15 minutes online to talk about your obstacle and your goals and see whether I'm the right coach for you – no commitment.</p>
-          </li>
-          <li class="reveal d2">
-            <h3>Your tailored plan</h3>
-            <p>We agree a coaching plan and get to work – from strategy and CV to mock interviews and detailed feedback.</p>
-          </li>
-        </ol>
-        <div class="facts">
-          <div class="fact reveal"><svg><use href="#i-video"/></svg><span><strong>Online sessions</strong><span>Join from anywhere by video call</span></span></div>
-          <div class="fact reveal d1"><svg><use href="#i-calendar"/></svg><span><strong>Flexible scheduling</strong><span>We agree a time that suits you</span></span></div>
-          <div class="fact reveal d2"><svg><use href="#i-tag"/></svg><span><strong>Free 15-minute intro call</strong><span>Pricing tailored to the support you need</span></span></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Packages -->
+    <!-- Ways to work together -->
     <section id="packages" class="packages">
       <div class="container">
         <div class="section-head center reveal">
           <span class="eyebrow">Ways to work together</span>
           <h2>Choose the support that fits your goal.</h2>
-          <p>Start with a free 15-minute intro call. Then we choose the format that fits where you are and where you want to go.</p>
+          <p>For students, recent graduates and professionals. Start with a free 15-minute intro call, then pick the format that fits you.</p>
         </div>
         <div class="packages-grid">
           <article class="card package featured reveal">
@@ -934,126 +720,43 @@
             <span class="icon-tile"><svg><use href="#i-compass"/></svg></span>
             <h3>Career Strategy Session</h3>
             <span class="pkg-meta">1 session · 60 minutes</span>
-            <p>We name your obstacle, review your CV and you leave with a clear, practical action plan.</p>
+            <p>We name your obstacle and you leave with a clear, practical plan.</p>
+            <ul class="pkg-list">
+              <li><svg><use href="#i-check"/></svg>Job search strategy</li>
+              <li><svg><use href="#i-check"/></svg>CV &amp; resume review</li>
+              <li><svg><use href="#i-check"/></svg>Step-by-step action plan</li>
+            </ul>
             <a class="btn btn-outline" href="#book" data-package="session">Choose this option</a>
           </article>
           <article class="card package reveal d2">
+            <span class="badge"><svg><use href="#i-star"/></svg>Premium</span>
             <span class="icon-tile"><svg><use href="#i-target"/></svg></span>
             <h3>Interview Prep: MBB or Big Tech</h3>
             <span class="pkg-meta">Package of sessions</span>
-            <p>Built around your interview dates: mock case or behavioural interviews, detailed feedback and a story that lands.</p>
+            <p>Built around your interview dates – for McKinsey, BCG, Bain and the leading tech companies.</p>
+            <ul class="pkg-list">
+              <li><svg><use href="#i-check"/></svg>Case &amp; problem-solving interviews</li>
+              <li><svg><use href="#i-check"/></svg>Behavioural questions &amp; your story</li>
+              <li><svg><use href="#i-check"/></svg>End-to-end mock interviews</li>
+              <li><svg><use href="#i-check"/></svg>Detailed, actionable feedback</li>
+            </ul>
             <a class="btn btn-outline" href="#book" data-package="interview">Choose this option</a>
           </article>
           <article class="card package reveal d3">
             <span class="icon-tile"><svg><use href="#i-route"/></svg></span>
             <h3>Career Change Programme</h3>
             <span class="pkg-meta">Multi-week programme</span>
-            <p>For a bigger move, step by step: positioning, CV and LinkedIn, networking and interviews.</p>
+            <p>For a bigger move, step by step.</p>
+            <ul class="pkg-list">
+              <li><svg><use href="#i-check"/></svg>Positioning &amp; direction</li>
+              <li><svg><use href="#i-check"/></svg>CV &amp; LinkedIn</li>
+              <li><svg><use href="#i-check"/></svg>Networking</li>
+              <li><svg><use href="#i-check"/></svg>Interviews</li>
+            </ul>
             <a class="btn btn-outline" href="#book" data-package="change">Choose this option</a>
           </article>
         </div>
         <p class="packages-note reveal">Pricing depends on the support you need. We discuss it on the free intro call, once we both know it's a good fit.</p>
-      </div>
-    </section>
-
-    <!-- Reviews -->
-    <section id="reviews" class="reviews">
-      <div class="container">
-        <div class="section-head center reveal">
-          <span class="eyebrow">Reviews</span>
-          <h2>What my clients say.</h2>
-          <p>Real feedback from the people I coach and mentor – published only with their permission.</p>
-        </div>
-
-        <!-- Published reviews. The grid stays hidden until it contains at least one review.
-             To publish a review you have permission to share, copy the template, fill it in and remove the comment markers.
-             Keep the number of star icons equal to the rating. See README. -->
-        <div class="reviews-grid">
-          <!--
-          <figure class="review reveal">
-            <div class="review-stars" role="img" aria-label="Rated 5 out of 5"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
-            <blockquote>"Review text, exactly as the client wrote it."</blockquote>
-            <figcaption><strong>Name or initials</strong><span>Role or headline</span></figcaption>
-          </figure>
-          -->
-        </div>
-
-        <div class="form-card review-form-card reveal">
-          <div class="form-card-head">
-            <strong>Leave a review</strong>
-            <span>About 1 minute</span>
-          </div>
-          <div class="form-start" id="reviewStart" hidden>
-            <span class="icon-tile"><svg><use href="#i-star"/></svg></span>
-            <h3>Had a session with me?</h3>
-            <p>Reviews from my coaching and mentorship sessions will appear here. I'd love to hear how yours went – it only takes a minute.</p>
-            <button class="btn btn-primary" type="button" id="reviewOpen">Leave a review <svg><use href="#i-arrow"/></svg></button>
-          </div>
-          <!-- Reviews are emailed to Francesca via FormSubmit and are never published automatically. -->
-          <form id="reviewForm" class="booking-form review-form" action="https://formsubmit.co/lisi.francy@gmail.com" method="POST" tabindex="-1" novalidate>
-            <input type="hidden" name="_subject" value="New review from your website">
-            <input type="hidden" name="_template" value="table">
-            <input type="text" name="_honey" class="bf-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
-
-            <div class="bf-row">
-              <div class="bf-field" data-field="text" data-label="Name to display" data-msg="Please add your name or initials.">
-                <label class="bf-label" for="rv-name">Your name <span class="req">*</span></label>
-                <p class="bf-help">As you'd like it to appear – initials are fine.</p>
-                <input id="rv-name" name="Name to display" type="text" autocomplete="name" required>
-                <span class="bf-error" aria-live="polite"></span>
-              </div>
-              <div class="bf-field" data-field="email" data-label="email" data-msg="Please add your email address." data-msg-invalid="Please enter a valid email address.">
-                <label class="bf-label" for="rv-email">Email address <span class="req">*</span></label>
-                <p class="bf-help">Only so I can thank you – never shown.</p>
-                <input id="rv-email" name="email" type="email" autocomplete="email" required>
-                <span class="bf-error" aria-live="polite"></span>
-              </div>
-            </div>
-
-            <div class="bf-field" data-field="text" data-label="Role or headline" data-optional>
-              <label class="bf-label" for="rv-role">Role or headline (optional)</label>
-              <input id="rv-role" name="Role or headline" type="text" autocomplete="organization-title" placeholder="e.g. Product Manager, Big Tech">
-            </div>
-
-            <fieldset class="bf-field" data-field="rating" data-label="Rating" data-msg="Please choose a rating.">
-              <legend>Your rating <span class="req">*</span></legend>
-              <div class="rating-row">
-                <div class="rating">
-                  <input type="radio" id="rv-r1" name="Rating" value="1"><label for="rv-r1" title="Poor"><span class="sr-only">1 star – Poor</span><svg aria-hidden="true"><use href="#i-star"/></svg></label>
-                  <input type="radio" id="rv-r2" name="Rating" value="2"><label for="rv-r2" title="Fair"><span class="sr-only">2 stars – Fair</span><svg aria-hidden="true"><use href="#i-star"/></svg></label>
-                  <input type="radio" id="rv-r3" name="Rating" value="3"><label for="rv-r3" title="Good"><span class="sr-only">3 stars – Good</span><svg aria-hidden="true"><use href="#i-star"/></svg></label>
-                  <input type="radio" id="rv-r4" name="Rating" value="4"><label for="rv-r4" title="Very good"><span class="sr-only">4 stars – Very good</span><svg aria-hidden="true"><use href="#i-star"/></svg></label>
-                  <input type="radio" id="rv-r5" name="Rating" value="5"><label for="rv-r5" title="Excellent"><span class="sr-only">5 stars – Excellent</span><svg aria-hidden="true"><use href="#i-star"/></svg></label>
-                </div>
-                <span class="rating-text" aria-hidden="true"></span>
-              </div>
-              <span class="bf-error" aria-live="polite"></span>
-            </fieldset>
-
-            <div class="bf-field" data-field="text" data-label="Review" data-msg="Please write a few words about your experience.">
-              <label class="bf-label" for="rv-text">Your review <span class="req">*</span></label>
-              <p class="bf-help">What did we work on, and what changed for you?</p>
-              <textarea id="rv-text" name="Review" required></textarea>
-              <span class="bf-error" aria-live="polite"></span>
-            </div>
-
-            <div class="bf-field" data-field="consent" data-label="Permission to publish" data-msg="Please confirm I can publish your review." data-yes="Yes – review, name and role may be published on the website">
-              <label class="bf-consent"><input type="checkbox" name="Permission to publish" value="yes" required><span>I agree that my review, name and role may be published on this website. My email address will never be shown. <span class="req">*</span></span></label>
-              <span class="bf-error" aria-live="polite"></span>
-            </div>
-
-            <div class="bf-submit">
-              <button class="btn btn-primary" type="submit">Send my review <svg><use href="#i-arrow"/></svg></button>
-              <p class="bf-note">I read every review personally and only publish it with your permission.</p>
-            </div>
-          </form>
-          <div class="form-done" id="reviewDone" tabindex="-1" hidden>
-            <span class="icon-tile"><svg><use href="#i-check-circle"/></svg></span>
-            <h3>Thank you for your review!</h3>
-            <p>I really appreciate you taking the time to share your experience.</p>
-            <p class="bf-alert" id="reviewWarn" role="alert" hidden>Sorry, your review may not have reached me. Please email it to me at <a href="mailto:lisi.francy@gmail.com?subject=Review">lisi.francy@gmail.com</a>.</p>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -1063,13 +766,12 @@
         <div class="book-info reveal">
           <span class="eyebrow">Book a career coach session</span>
           <h2>Tell me what's holding you back.</h2>
-          <p>A few quick questions about where you are now, what made you reach out, what would make our session truly valuable for you and when you're free. I read every answer personally and will get back to you by email to confirm a time.</p>
-          <ul class="next-steps">
-            <li><svg><use href="#i-check-circle"/></svg><span>Start with a free 15-minute intro call – no commitment</span></li>
-            <li><svg><use href="#i-check-circle"/></svg><span>Takes about 2 minutes</span></li>
-            <li><svg><use href="#i-check-circle"/></svg><span>Your answers come directly to me</span></li>
-            <li><svg><use href="#i-check-circle"/></svg><span>Prefer email? Reach me directly below</span></li>
-          </ul>
+          <p>I read every answer personally and reply by email to confirm a time.</p>
+          <ol class="book-steps" aria-label="How it works">
+            <li><strong>Answer a few questions</strong><span>About 2 minutes</span></li>
+            <li><strong>Free 15-minute intro call</strong><span>Online, no commitment</span></li>
+            <li><strong>Your tailored plan</strong><span>Sessions at times that suit you</span></li>
+          </ol>
           <ul class="contact-list">
             <li>
               <a href="mailto:lisi.francy@gmail.com?subject=Coaching%20session%20request">
@@ -1204,18 +906,6 @@
         </div>
         <div class="faq-list">
           <details class="reveal">
-            <summary>How do I book a career coach session?</summary>
-            <p>Click "Book a career coach session", choose the option you're interested in (or start with the free 15-minute intro call), answer a few quick questions and tell me when you're available – or email me directly. I read every request and will get back to you to confirm your session.</p>
-          </details>
-          <details class="reveal">
-            <summary>Why do you ask questions before we meet?</summary>
-            <p>So our session can go straight to what matters most to you – whether that is the obstacle holding you back at work, an upcoming interview or your next career move.</p>
-          </details>
-          <details class="reveal">
-            <summary>Are sessions online?</summary>
-            <p>Yes. Sessions take place online by video call, in English or Italian, so you can join from wherever you are.</p>
-          </details>
-          <details class="reveal">
             <summary>What's the investment?</summary>
             <p>It depends on the support you need – a single session, an interview preparation package or a longer programme. We discuss it on the free 15-minute intro call, once we both know it's a good fit. There's no commitment.</p>
           </details>
@@ -1228,17 +918,116 @@
             <p>Not at all. A rejection shows you what to work on, and most firms let you reapply after a waiting period. We look honestly at what didn't land – your story, your cases or your behavioural answers – and build a plan so you're better prepared next time.</p>
           </details>
           <details class="reveal">
-            <summary>I don't have a network or contacts inside – can I still get in?</summary>
-            <p>Yes. A network helps, but you can build one. We work on who to reach out to, how to approach them in a way that feels natural, and how to make your application strong enough to stand on its own.</p>
-          </details>
-          <details class="reveal">
             <summary>My background isn't classic consulting or tech – can I compete?</summary>
             <p>Yes. My own path went from consulting to Big Tech, so I know how to translate experience from one world to another. What matters is how you connect your background to the role: together we find your strengths and turn them into a story recruiters understand.</p>
           </details>
           <details class="reveal">
             <summary>I'm not targeting consulting or Big Tech – can you still help?</summary>
-            <p>Absolutely. Premium Interview Preparation focuses equally on MBB consulting and Big Tech, while job search strategy, CV reviews and career planning work across industries and career stages.</p>
+            <p>Absolutely. Interview preparation focuses on MBB consulting and Big Tech, but job search strategy, CV reviews and career planning work across industries and career stages.</p>
           </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reviews -->
+    <section id="reviews" class="reviews">
+      <div class="container">
+        <div class="section-head center reveal">
+          <span class="eyebrow">Reviews</span>
+          <h2>What my clients say.</h2>
+          <p>Real feedback from the people I coach and mentor – published only with their permission.</p>
+        </div>
+
+        <!-- Published reviews. The grid stays hidden until it contains at least one review.
+             To publish a review you have permission to share, copy the template, fill it in and remove the comment markers.
+             Keep the number of star icons equal to the rating. See README. -->
+        <div class="reviews-grid">
+          <!--
+          <figure class="review reveal">
+            <div class="review-stars" role="img" aria-label="Rated 5 out of 5"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
+            <blockquote>"Review text, exactly as the client wrote it."</blockquote>
+            <figcaption><strong>Name or initials</strong><span>Role or headline</span></figcaption>
+          </figure>
+          -->
+        </div>
+
+        <div class="form-card review-form-card reveal">
+          <div class="form-card-head">
+            <strong>Leave a review</strong>
+            <span>About 1 minute</span>
+          </div>
+          <div class="form-start" id="reviewStart" hidden>
+            <span class="icon-tile"><svg><use href="#i-star"/></svg></span>
+            <div>
+              <h3>Had a session with me?</h3>
+              <p>I'd love to hear how it went. It only takes a minute.</p>
+            </div>
+            <button class="btn btn-primary" type="button" id="reviewOpen">Leave a review <svg><use href="#i-arrow"/></svg></button>
+          </div>
+          <!-- Reviews are emailed to Francesca via FormSubmit and are never published automatically. -->
+          <form id="reviewForm" class="booking-form review-form" action="https://formsubmit.co/lisi.francy@gmail.com" method="POST" tabindex="-1" novalidate>
+            <input type="hidden" name="_subject" value="New review from your website">
+            <input type="hidden" name="_template" value="table">
+            <input type="text" name="_honey" class="bf-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+            <div class="bf-row">
+              <div class="bf-field" data-field="text" data-label="Name to display" data-msg="Please add your name or initials.">
+                <label class="bf-label" for="rv-name">Your name <span class="req">*</span></label>
+                <p class="bf-help">As you'd like it to appear – initials are fine.</p>
+                <input id="rv-name" name="Name to display" type="text" autocomplete="name" required>
+                <span class="bf-error" aria-live="polite"></span>
+              </div>
+              <div class="bf-field" data-field="email" data-label="email" data-msg="Please add your email address." data-msg-invalid="Please enter a valid email address.">
+                <label class="bf-label" for="rv-email">Email address <span class="req">*</span></label>
+                <p class="bf-help">Only so I can thank you – never shown.</p>
+                <input id="rv-email" name="email" type="email" autocomplete="email" required>
+                <span class="bf-error" aria-live="polite"></span>
+              </div>
+            </div>
+
+            <div class="bf-field" data-field="text" data-label="Role or headline" data-optional>
+              <label class="bf-label" for="rv-role">Role or headline (optional)</label>
+              <input id="rv-role" name="Role or headline" type="text" autocomplete="organization-title" placeholder="e.g. Product Manager, Big Tech">
+            </div>
+
+            <fieldset class="bf-field" data-field="rating" data-label="Rating" data-msg="Please choose a rating.">
+              <legend>Your rating <span class="req">*</span></legend>
+              <div class="rating-row">
+                <div class="rating">
+                  <input type="radio" id="rv-r1" name="Rating" value="1"><label for="rv-r1" title="Poor"><span class="sr-only">1 star – Poor</span><svg aria-hidden="true"><use href="#i-star"/></svg></label>
+                  <input type="radio" id="rv-r2" name="Rating" value="2"><label for="rv-r2" title="Fair"><span class="sr-only">2 stars – Fair</span><svg aria-hidden="true"><use href="#i-star"/></svg></label>
+                  <input type="radio" id="rv-r3" name="Rating" value="3"><label for="rv-r3" title="Good"><span class="sr-only">3 stars – Good</span><svg aria-hidden="true"><use href="#i-star"/></svg></label>
+                  <input type="radio" id="rv-r4" name="Rating" value="4"><label for="rv-r4" title="Very good"><span class="sr-only">4 stars – Very good</span><svg aria-hidden="true"><use href="#i-star"/></svg></label>
+                  <input type="radio" id="rv-r5" name="Rating" value="5"><label for="rv-r5" title="Excellent"><span class="sr-only">5 stars – Excellent</span><svg aria-hidden="true"><use href="#i-star"/></svg></label>
+                </div>
+                <span class="rating-text" aria-hidden="true"></span>
+              </div>
+              <span class="bf-error" aria-live="polite"></span>
+            </fieldset>
+
+            <div class="bf-field" data-field="text" data-label="Review" data-msg="Please write a few words about your experience.">
+              <label class="bf-label" for="rv-text">Your review <span class="req">*</span></label>
+              <p class="bf-help">What did we work on, and what changed for you?</p>
+              <textarea id="rv-text" name="Review" required></textarea>
+              <span class="bf-error" aria-live="polite"></span>
+            </div>
+
+            <div class="bf-field" data-field="consent" data-label="Permission to publish" data-msg="Please confirm I can publish your review." data-yes="Yes – review, name and role may be published on the website">
+              <label class="bf-consent"><input type="checkbox" name="Permission to publish" value="yes" required><span>I agree that my review, name and role may be published on this website. My email address will never be shown. <span class="req">*</span></span></label>
+              <span class="bf-error" aria-live="polite"></span>
+            </div>
+
+            <div class="bf-submit">
+              <button class="btn btn-primary" type="submit">Send my review <svg><use href="#i-arrow"/></svg></button>
+              <p class="bf-note">I read every review personally and only publish it with your permission.</p>
+            </div>
+          </form>
+          <div class="form-done" id="reviewDone" tabindex="-1" hidden>
+            <span class="icon-tile"><svg><use href="#i-check-circle"/></svg></span>
+            <h3>Thank you for your review!</h3>
+            <p>I really appreciate you taking the time to share your experience.</p>
+            <p class="bf-alert" id="reviewWarn" role="alert" hidden>Sorry, your review may not have reached me. Please email it to me at <a href="mailto:lisi.francy@gmail.com?subject=Review">lisi.francy@gmail.com</a>.</p>
+          </div>
         </div>
       </div>
     </section>
